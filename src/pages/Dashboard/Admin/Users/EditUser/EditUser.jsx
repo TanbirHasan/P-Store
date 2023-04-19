@@ -22,8 +22,6 @@ const EditUser = ({ setShowEditUser, data }) => {
 	const [portalError, setPortalError] = useState('');
 
 	const handleEditUser = (data) => {
-
-
 		if (!role.length) {
 			toast.error('Role Field cannot be empty');
 			setRoleError('Role Field cannot be empty');
@@ -145,7 +143,7 @@ const EditUser = ({ setShowEditUser, data }) => {
 						<MenuItem sx={{ display: 'none' }} disabled value={''}>
 							Select Role
 						</MenuItem>
-						<MenuItem value={'Admin'}>Admin</MenuItem>
+						<MenuItem value={`${data.userRole}`}>{data.userRole }</MenuItem>
 					</Select>
 				</div>
 

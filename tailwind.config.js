@@ -5,6 +5,7 @@ module.exports = {
 		extend: {
 			boxShadow: {
 				custom: 'inset 0px 4px 4px rgba(255, 188, 15, 0.4)',
+				custom2: "0px 4px 4px rgba(255, 188, 15, 0.4)"
 			},
 		},
 	},

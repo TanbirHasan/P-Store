@@ -28,9 +28,6 @@
   color: #61dafb;
 }
 
-.custom-shadow {
-  box-shadow: inset 0px 4px 4px rgba(255, 188, 15, 0.4);
-}
 
 /* For MUI SELECT Component */
 .custom-input fieldset {
@@ -48,4 +45,18 @@
   border: 1px solid rgba(255, 188, 15, 0.5) !important;
   border-radius: 3px !important;
   background-color: #FFBC0F;
+}
+
+.custom-analytics-popup-input fieldset {
+  border: 1px solid rgba(255, 188, 15, 0.5) !important;
+  border-radius: 3px !important;
+  box-shadow: 0px 4px 4px rgba(255, 188, 15, 0.25) !important;
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator {
+
+  font-size: 24px;
+  padding: 0px;
+  color: #FFBC0F;
+
 }

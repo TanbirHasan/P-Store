@@ -1,6 +1,8 @@
 import React from 'react';
 import { Menu, Sidebar, useProSidebar } from 'react-pro-sidebar';
 import { Link, Outlet, ScrollRestoration, useLocation } from 'react-router-dom';
+import analyticsDarkVesion from '../../assets/icons/analytics-dark-version.svg';
+import analytics from '../../assets/icons/analytics.svg';
 import organizationDarkVersion from '../../assets/icons/dark-organization-icon.svg';
 import dashboard from '../../assets/icons/dashboard-orginal.svg';
 import dashboardIconDark from '../../assets/icons/dashboard.svg';
@@ -38,8 +40,6 @@ const DashboardLayout = () => {
 
 								<Menu>
 									<div className=" px-7">
-
-
 										{/*                  Dashboard                   */}
 										<Link to={'/dashboard/admin/home'}>
 											<div
@@ -139,6 +139,41 @@ const DashboardLayout = () => {
 																: 'font-medium'
 														} `}>
 														Users
+													</p>
+												</li>
+											</div>
+										</Link>
+
+										{/*                  ANALYTICS                   */}
+										<Link to={'/dashboard/admin/analytics'}>
+											<div
+												className={`relative  py-3 flex hover:cursor-pointer text-lg rounded-[3px] mb-2  ${
+													activeRoute('/dashboard/admin/analytics') === true
+														? 'font-bold bg-[#FFBC0F]'
+														: 'font-medium '
+												}`}>
+												<li className="my-[3px] flex cursor-pointer items-center px-3 text-[18px]">
+													{activeRoute('/dashboard/admin/analytics') === true ? (
+														<img
+															src={analyticsDarkVesion}
+															alt="organization-icon"
+															className={`w-[20px] h-[20px]`}
+														/>
+													) : (
+														<img
+															src={analytics}
+															alt="organization-icon"
+															className={`w-[20px] h-[20px]`}
+														/>
+													)}
+
+													<p
+														className={`leading-5 ml-[10px] flex ${
+															activeRoute('/dashboard/admin/analytics') === true
+																? 'font-bold'
+																: 'font-medium'
+														} `}>
+														Analytics
 													</p>
 												</li>
 											</div>
