@@ -1,24 +1,37 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Menu, Sidebar, useProSidebar } from 'react-pro-sidebar';
-import { Link, Outlet, ScrollRestoration, useLocation } from 'react-router-dom';
+import { Link, Outlet, ScrollRestoration, useLocation, useNavigate } from 'react-router-dom';
 import analyticsDarkVesion from '../../assets/icons/analytics-dark-version.svg';
 import analytics from '../../assets/icons/analytics.svg';
 import organizationDarkVersion from '../../assets/icons/dark-organization-icon.svg';
 import dashboard from '../../assets/icons/dashboard-orginal.svg';
 import dashboardIconDark from '../../assets/icons/dashboard.svg';
 import organization from '../../assets/icons/organization.svg';
+import portalDark from '../../assets/icons/portal-dark.svg';
+import portal from '../../assets/icons/portal.svg';
 import userIconDark from '../../assets/icons/user-dark-version.svg';
 import userIcon from '../../assets/icons/users.svg';
 import DashboardNavbar from '../../components/DashboardNavbar/DashboardNavbar';
+import { useEffect } from 'react';
 
 const DashboardLayout = () => {
 	const { toggleSidebar, collapseSidebar, broken, collapsed } = useProSidebar();
 
+	const [createPortal, setCreatePortal] = useState(false);
+
 	let location = useLocation();
+	let navigate = useNavigate();
+
 	// verifies if routeName is the one active (in browser input)
 	const activeRoute = (routeName) => {
 		return location.pathname.includes(routeName);
 	};
+
+	useEffect(() => {
+		const storage = localStorage.getItem('create-portal');
+		const parsedStorage = JSON.parse(storage);
+		setCreatePortal(parsedStorage);
+	}, []);
 
 	return (
 		<div className="#FAFAFA">
@@ -41,7 +54,12 @@ const DashboardLayout = () => {
 								<Menu>
 									<div className=" px-7">
 										{/*                  Dashboard                   */}
-										<Link to={'/dashboard/admin/home'}>
+										<Link
+											onClick={() => {
+												setCreatePortal(false);
+												localStorage.clear();
+											}}
+											to={'/dashboard/admin/home'}>
 											<div
 												className={`relative  py-3 flex hover:cursor-pointer text-lg rounded-[3px] mb-2  ${
 													activeRoute('/dashboard/admin/home') === true
@@ -75,7 +93,13 @@ const DashboardLayout = () => {
 										</Link>
 
 										{/*                  Organization                   */}
-										<Link to={'/dashboard/admin/organization'}>
+										<Link
+											onClick={() => {
+												localStorage.removeItem('create-portal');
+												localStorage.removeItem('ShowAllPortfolio');
+												setCreatePortal(false);
+											}}
+											to={'/dashboard/admin/organization'}>
 											<div
 												className={`relative  py-3 flex hover:cursor-pointer text-lg rounded-[3px] mb-2  ${
 													activeRoute('/dashboard/admin/organization') === true
@@ -110,7 +134,13 @@ const DashboardLayout = () => {
 										</Link>
 
 										{/*                  USERS                   */}
-										<Link to={'/dashboard/admin/administrator'}>
+										<Link
+											onClick={() => {
+												localStorage.removeItem('create-portal');
+												localStorage.removeItem('ShowAllPortfolio');
+												setCreatePortal(false);
+											}}
+											to={'/dashboard/admin/administrator'}>
 											<div
 												className={`relative  py-3 flex hover:cursor-pointer text-lg rounded-[3px] mb-2  ${
 													activeRoute('/dashboard/admin/administrator') === true
@@ -145,7 +175,13 @@ const DashboardLayout = () => {
 										</Link>
 
 										{/*                  ANALYTICS                   */}
-										<Link to={'/dashboard/admin/analytics'}>
+										<Link
+											onClick={() => {
+												setCreatePortal(false);
+												localStorage.removeItem('create-portal');
+												localStorage.removeItem('ShowAllPortfolio');
+											}}
+											to={'/dashboard/admin/analytics'}>
 											<div
 												className={`relative  py-3 flex hover:cursor-pointer text-lg rounded-[3px] mb-2  ${
 													activeRoute('/dashboard/admin/analytics') === true
@@ -178,7 +214,68 @@ const DashboardLayout = () => {
 												</li>
 											</div>
 										</Link>
-										
+
+										{/*                  Create Portal                   */}
+										<div className={`${createPortal ? 'hidden' : 'block'}`}>
+											<button
+												onClick={() => {
+													setCreatePortal(true);
+													navigate('/dashboard/admin/branding');
+													localStorage.setItem('create-portal', true);
+												}}>
+												<div
+													className={`relative  py-3 flex hover:cursor-pointer text-lg rounded-[3px] mb-2 $`}>
+													<li className="my-[3px] flex cursor-pointer items-center px-3 text-[18px]">
+														<img
+															src={portal}
+															alt="organization-icon"
+															className={`w-[20px] h-[20px]`}
+														/>
+
+														<p className={`leading-5 ml-[10px] flex font-medium `}>Create Portal</p>
+													</li>
+												</div>
+											</button>
+										</div>
+
+										{createPortal && (
+											<>
+												{/*                  Branding                  */}
+												<Link to={'/dashboard/admin/branding'}>
+													<div
+														className={`relative  py-3 flex hover:cursor-pointer text-lg rounded-[3px] mb-2  ${
+															activeRoute('/dashboard/admin/branding') === true
+																? 'font-bold bg-[#FFBC0F]'
+																: 'font-medium '
+														}`}>
+														<li className="my-[3px] flex cursor-pointer items-center px-3 text-[18px]">
+															{activeRoute('/dashboard/admin/branding') === true ? (
+																<img
+																	src={portalDark}
+																	alt="organization-icon"
+																	className={`w-[20px] h-[20px]`}
+																/>
+															) : (
+																<img
+																	src={portal}
+																	alt="organization-icon"
+																	className={`w-[20px] h-[20px]`}
+																/>
+															)}
+
+															<p
+																className={`leading-5 ml-[10px] flex ${
+																	activeRoute('/dashboard/admin/branding') === true
+																		? 'font-bold'
+																		: 'font-medium'
+																} `}>
+																Branding
+															</p>
+														</li>
+													</div>
+												</Link>
+											</>
+										)}
 									</div>
 								</Menu>
 							</div>
