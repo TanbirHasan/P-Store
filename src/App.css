@@ -84,7 +84,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   box-shadow: 0 0 0 2px #FFBC0F !important
 }
 
-.ant-upload-wrapper {
+.custom-upload .ant-upload-wrapper {
   display: flex !important;
   justify-content: center !important;
 }

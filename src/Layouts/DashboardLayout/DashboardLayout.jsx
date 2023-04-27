@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { Menu, Sidebar, useProSidebar } from 'react-pro-sidebar';
 import { Link, Outlet, ScrollRestoration, useLocation, useNavigate } from 'react-router-dom';
+import { AiFillHome } from 'react-icons/ai';
+import { useEffect } from 'react';
 import analyticsDarkVesion from '../../assets/icons/analytics-dark-version.svg';
 import analytics from '../../assets/icons/analytics.svg';
 import organizationDarkVersion from '../../assets/icons/dark-organization-icon.svg';
@@ -12,7 +14,8 @@ import portal from '../../assets/icons/portal.svg';
 import userIconDark from '../../assets/icons/user-dark-version.svg';
 import userIcon from '../../assets/icons/users.svg';
 import DashboardNavbar from '../../components/DashboardNavbar/DashboardNavbar';
-import { useEffect } from 'react';
+import recommendation from '../../assets/icons/recommendation.svg';
+import recommendationDark from '../../assets/icons/recommendation-dark.svg';
 
 const DashboardLayout = () => {
 	const { toggleSidebar, collapseSidebar, broken, collapsed } = useProSidebar();
@@ -270,6 +273,70 @@ const DashboardLayout = () => {
 																		: 'font-medium'
 																} `}>
 																Branding
+															</p>
+														</li>
+													</div>
+												</Link>
+
+												{/*                  HOME                  */}
+												<Link to={'/dashboard/admin/createPortfolio-home'}>
+													<div
+														className={`relative  py-3 flex hover:cursor-pointer text-lg rounded-[3px] mb-2  ${
+															activeRoute('/dashboard/admin/createPortfolio-home') === true
+																? 'font-bold bg-[#FFBC0F]'
+																: 'font-medium '
+														}`}>
+														<li className="my-[3px] flex cursor-pointer items-center px-3 text-[20px]">
+															<AiFillHome
+																className={`${
+																	activeRoute('/dashboard/admin/createPortfolio-home') === true
+																		? 'text-black '
+																		: 'text-[#FFBC0F] '
+																}`}
+															/>
+
+															<p
+																className={`leading-5 ml-[10px] flex ${
+																	activeRoute('/dashboard/admin/createPortfolio-home') === true
+																		? 'font-bold'
+																		: 'font-medium'
+																} `}>
+																Home
+															</p>
+														</li>
+													</div>
+												</Link>
+
+												{/*         Recommendation    */}
+												<Link to={'/dashboard/admin/recommendation'}>
+													<div
+														className={`relative  py-3 flex hover:cursor-pointer text-lg rounded-[3px] mb-2  ${
+															activeRoute('/dashboard/admin/recommendation') === true
+																? 'font-bold bg-[#FFBC0F]'
+																: 'font-medium '
+														}`}>
+														<li className="my-[3px] flex cursor-pointer items-center px-3 text-[20px]">
+															{activeRoute('/dashboard/admin/recommendation') === true ? (
+																<img
+																	src={recommendationDark}
+																	alt="recommendationDark-icon"
+																	className={`w-[20px] h-[20px]`}
+																/>
+															) : (
+																<img
+																	src={recommendation}
+																	alt="recommendation-icon"
+																	className={`w-[20px] h-[20px]`}
+																/>
+															)}
+
+															<p
+																className={`leading-5 ml-[10px] flex ${
+																	activeRoute('/dashboard/admin/recommendation') === true
+																		? 'font-bold'
+																		: 'font-medium'
+																} `}>
+																Recommendation
 															</p>
 														</li>
 													</div>

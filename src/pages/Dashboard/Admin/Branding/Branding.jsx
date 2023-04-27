@@ -9,6 +9,7 @@ import { Upload } from 'antd';
 import ImgCrop from 'antd-img-crop';
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
+import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 
 const YellowSwitch = styled(Switch)(({ theme }) => ({
@@ -31,6 +32,8 @@ const Branding = () => {
 		reset,
 	} = useForm();
 
+	const navigate = useNavigate()
+
 	const [client, setClient] = useState('');
 	const [clientError, setClientError] = useState('');
 	const [template, setTemplate] = useState('');
@@ -38,10 +41,10 @@ const Branding = () => {
 	const [font, setFont] = useState('');
 	const [loginBackgroundChecked, setLoginBackgroundChecked] = useState(true);
 
-	const [backgroundColor, setBackgroundColor] = useState('#F90000');
-	const [primaryColor, setPrimaryColor] = useState('#F90000');
+	const [backgroundColor, setBackgroundColor] = useState('#FFBC0F');
+	const [primaryColor, setPrimaryColor] = useState('#0d0d0d');
 	const [secondaryColor, setSecondaryColor] = useState('#892c2c');
-	const [fontColor, setFontColor] = useState('#000000');
+	const [fontColor, setFontColor] = useState('#FFBC0F');
 	const [loginColor, setLoginColor] = useState('#F90000');
 
 	const [fileList, setFileList] = useState([]);
@@ -114,8 +117,8 @@ const Branding = () => {
 		};
 
 		console.log(brandingData);
+		navigate('/dashboard/admin/createPortfolio-home')
 	};
-
 
 	return (
 		<form onSubmit={handleSubmit(handleBranding)}>
@@ -216,7 +219,7 @@ const Branding = () => {
 					<div>
 						<h1 className="font-medium">Header Menu Logo</h1>
 					</div>
-					<div className="lg:w-[600px]">
+					<div className="lg:w-[600px] custom-upload">
 						<ImgCrop
 							fillColor="white"
 							showReset={true}
@@ -228,7 +231,7 @@ const Branding = () => {
 								// className="custom-upload"
 								action="https://www.mocky.io/v2/5cc8019d300000980a055e76"
 								// listType="picture-card"
-								className="custom-upload"
+								// className="custom-upload"
 								listType="picture"
 								fileList={fileList}
 								onChange={onChange}
@@ -263,7 +266,7 @@ const Branding = () => {
 							value={backgroundColor}
 							onChange={(event) => setBackgroundColor(event.target.value)}
 							type="color"
-							className="absolute left-[20px] top-[12px] w-[22px] border-0 outline-none bg-transparent "
+							className="absolute left-[20px] top-[12px] w-[22px] border-0 outline-none bg-transparent cursor-pointer "
 						/>
 					</div>
 				</div>
@@ -288,7 +291,7 @@ const Branding = () => {
 									value={primaryColor}
 									onChange={(event) => setPrimaryColor(event.target.value)}
 									type="color"
-									className="absolute left-[20px] top-[12px] w-[22px] border-0 outline-none bg-transparent "
+									className="absolute left-[20px] top-[12px] w-[22px] border-0 outline-none bg-transparent cursor-pointer "
 								/>
 							</div>
 						</div>
@@ -305,7 +308,7 @@ const Branding = () => {
 									value={secondaryColor}
 									onChange={(event) => setSecondaryColor(event.target.value)}
 									type="color"
-									className="absolute left-[20px] top-[12px] w-[22px] border-0 outline-none bg-transparent "
+									className="absolute left-[20px] top-[12px] w-[22px] border-0 outline-none bg-transparent cursor-pointer "
 								/>
 							</div>
 						</div>
@@ -349,7 +352,7 @@ const Branding = () => {
 							value={fontColor}
 							onChange={(event) => setFontColor(event.target.value)}
 							type="color"
-							className="absolute left-[20px] top-[12px] w-[22px] border-0 outline-none bg-transparent "
+							className="absolute left-[20px] top-[12px] w-[22px] border-0 outline-none bg-transparent cursor-pointer"
 						/>
 					</div>
 				</div>
@@ -407,14 +410,51 @@ const Branding = () => {
 				</div>
 			</div>
 
-			<div
-				className="h-[170px] mt-[100px] flex items-center justify-center px-20"
-				style={{ backgroundColor: primaryColor }}>
-
-					<h1 className="text-3xl font-extrabold" style={{ color: fontColor }}>
-						This is for checking dynamic colors
-					</h1>
+			{/* Preview Section */}
+			<div className="p-6 border border-[#ffbc0f66] border-t-0 border-b-0 ">
+				<div>
+					<h1 className="text-xl font-semibold leading-6">Preview</h1>
+				</div>
 			</div>
+
+			{/* Preview Screen */}
+			<div className="px-[60px] py-[40px] border border-[#ffbc0f66] mb-[46px]">
+				{/* Navbar part in preview section */}
+				<nav
+					style={{ color: fontColor, backgroundColor: primaryColor }}
+					className="h-[100px] flex items-center justify-between   font-medium px-[32px]">
+					<div>
+						{fileList.length ? (
+							<img src={fileList[0]?.thumbUrl} alt="" className="w-16 h-16 rounded-full" />
+						) : (
+							<h1 className="font-bold text-[25px]">LOGO</h1>
+						)}
+					</div>
+					<div className="flex">
+						<ul className="flex gap-3 text-[20px] cursor-pointer">
+							<li>Home</li>
+							<li>Recommendation</li>
+							<li>Projects</li>
+							<li>Video Library</li>
+							<li>Contact</li>
+						</ul>
+					</div>
+				</nav>
+
+				{/* Text part in preview section*/}
+				<div style={{ backgroundColor: backgroundColor }} className="px-[46px]">
+					<h1 className="text-[40px] italic leading-[35px] mb-2 pt-10">
+						Welcome to your updated Portfolio
+					</h1>
+					<h1 className="text-[30px] leading-[35px] pb-[75px]">Learn More-</h1>
+				</div>
+
+				{/* Footer part in preview section*/}
+				<footer style={{ backgroundColor: primaryColor }} className="p-[33px]"></footer>
+			</div>
+
+			{/* Save button */}
+			<button className='h-[80px] bg-[#FFBC0F] rounded-[3px] px-[32px] font-bold' type="submit">Save & Next</button>
 		</form>
 	);
 };
