@@ -10,6 +10,7 @@ import Organization from './../../pages/Dashboard/Admin/Organization/Organizatio
 import Login from './../../pages/Login/Login';
 import CreatePortfolioHome from '../../pages/Dashboard/Admin/CreatePortfolioHome/CreatePortfolioHome';
 import Recommendation from '../../pages/Dashboard/Admin/Recommendation/Recommendation';
+import Projects from '../../pages/Dashboard/Admin/Projects/Projects';
 
 export const router = createBrowserRouter([
 	//* normal main route
@@ -61,6 +62,10 @@ export const router = createBrowserRouter([
 			{
 				path: '/dashboard/admin/recommendation',
 				element: <Recommendation />,
+			},
+			{
+				path: '/dashboard/admin/projects',
+				element: <Projects />,
 			},
 		],
 	},

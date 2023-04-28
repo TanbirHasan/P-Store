@@ -114,7 +114,7 @@ const CreatePortfolioHome = () => {
 						</label>
 						<input
 							type="text"
-							placeholder="contact"
+							placeholder="Contact"
 							{...register('buttonLabel')}
 							className={`w-full  border border-[#FFD333] focus:outline-0 focus:ring-0 focus:ring-transparent focus:border-[1.5px] focus:border-[#FFD333]  rounded-[3px] h-[60px] mt-4`}
 						/>
@@ -134,8 +134,9 @@ const CreatePortfolioHome = () => {
 							<MenuItem sx={{ display: 'none' }} disabled value={''}>
 								Select Route
 							</MenuItem>
-							<MenuItem value={'Sajid'}>Sajid</MenuItem>
-							<MenuItem value={'Tanbir'}>Tanbir</MenuItem>
+							<MenuItem value={'Home'}>Home</MenuItem>
+							<MenuItem value={'About'}>About</MenuItem>
+							<MenuItem value={'Contact'}>Contact</MenuItem>
 						</Select>
 					</div>
 				</div>
