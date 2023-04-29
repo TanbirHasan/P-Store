@@ -8,6 +8,9 @@ import Users from '../../pages/Dashboard/Admin/Users/Users';
 import AdminHome from './../../pages/Dashboard/Admin/AdminHome/AdminHome';
 import Organization from './../../pages/Dashboard/Admin/Organization/Organization';
 import Login from './../../pages/Login/Login';
+import CreatePortfolioHome from '../../pages/Dashboard/Admin/CreatePortfolioHome/CreatePortfolioHome';
+import Recommendation from '../../pages/Dashboard/Admin/Recommendation/Recommendation';
+import Projects from '../../pages/Dashboard/Admin/Projects/Projects';
 
 export const router = createBrowserRouter([
 	//* normal main route
@@ -51,6 +54,18 @@ export const router = createBrowserRouter([
 			{
 				path: '/dashboard/admin/branding',
 				element: <Branding />,
+			},
+			{
+				path: '/dashboard/admin/createPortfolio-home',
+				element: <CreatePortfolioHome />,
+			},
+			{
+				path: '/dashboard/admin/recommendation',
+				element: <Recommendation />,
+			},
+			{
+				path: '/dashboard/admin/projects',
+				element: <Projects />,
 			},
 		],
 	},

@@ -84,7 +84,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   box-shadow: 0 0 0 2px #FFBC0F !important
 }
 
-.ant-upload-wrapper {
+.custom-upload .ant-upload-wrapper {
   display: flex !important;
   justify-content: center !important;
 }
@@ -95,4 +95,16 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 
 .ant-upload-list-item-name {
   color: #FFBC0F !important;
+}
+
+.custom-upload .ant-upload-select {
+  width: 100% !important;
+  background: rgba(255, 188, 15, 0.05) !important;
+  border: 1px dashed rgba(255, 188, 15, 0.7) !important;
+  border-radius: 3px !important;
+}
+
+.ant-btn-primary {
+  background-color: #FFBC0F !important;
+  color: black !important;
 }
