@@ -18,6 +18,7 @@ import recommendation from '../../assets/icons/recommendation.svg';
 import recommendationDark from '../../assets/icons/recommendation-dark.svg';
 import projects from '../../assets/icons/projects.svg';
 import projectsDark from '../../assets/icons/projects-dark.svg';
+import videoLibrary from '../../assets/icons/videolibrary.svg';
 
 const DashboardLayout = () => {
 	const { toggleSidebar, collapseSidebar, broken, collapsed } = useProSidebar();
@@ -374,6 +375,42 @@ const DashboardLayout = () => {
 																		: 'font-medium'
 																} `}>
 																Projects
+															</p>
+														</li>
+													</div>
+												</Link>
+
+
+												{/* Video Library */}
+												<Link to={'/dashboard/admin/videolibrary'}>
+													<div
+														className={`relative  py-3 flex hover:cursor-pointer text-lg rounded-[3px] mb-2  ${
+															activeRoute('/dashboard/admin/videolibrary') === true
+																? 'font-bold bg-[#FFBC0F]'
+																: 'font-medium '
+														}`}>
+														<li className="my-[3px] flex cursor-pointer items-center px-3 text-[20px]">
+															{activeRoute('/dashboard/admin/videolibrary') === true ? (
+																<img
+																src={videoLibrary}
+																alt="recommendationDark-icon"
+																className={`w-[20px] h-[20px]`}
+															/>
+														) : (
+															<img
+																src={videoLibrary}
+																alt="recommendation-icon"
+																className={`w-[20px] h-[20px]`}
+															/>
+															)}
+
+															<p
+																className={`leading-5 ml-[10px] flex ${
+																	activeRoute('/dashboard/admin/videolibrary') === true
+																		? 'font-bold'
+																		: 'font-medium'
+																} `}>
+																Video Library
 															</p>
 														</li>
 													</div>
