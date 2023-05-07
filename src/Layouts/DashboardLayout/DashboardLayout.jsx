@@ -18,7 +18,9 @@ import recommendation from '../../assets/icons/recommendation.svg';
 import recommendationDark from '../../assets/icons/recommendation-dark.svg';
 import projects from '../../assets/icons/projects.svg';
 import projectsDark from '../../assets/icons/projects-dark.svg';
-import videoLibrary from '../../assets/icons/videolibrary.svg';
+import videoLibrary from '../../assets/icons/videoLibrary.svg';
+import videoLibraryDark from '../../assets/icons/videoLibrary-dark.svg';
+
 
 const DashboardLayout = () => {
 	const { toggleSidebar, collapseSidebar, broken, collapsed } = useProSidebar();
@@ -392,7 +394,7 @@ const DashboardLayout = () => {
 														<li className="my-[3px] flex cursor-pointer items-center px-3 text-[20px]">
 															{activeRoute('/dashboard/admin/videolibrary') === true ? (
 																<img
-																src={videoLibrary}
+																src={videoLibraryDark}
 																alt="recommendationDark-icon"
 																className={`w-[20px] h-[20px]`}
 															/>

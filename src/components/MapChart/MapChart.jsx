@@ -7,7 +7,7 @@ const MapChart = () => {
 	const [content, setContent] = useState('');
 	return (
 		<div className="w-full cursor-grab ">
-			<ComposableMap height={185} width={400}>
+			<ComposableMap height={195} width={400}>
 				<ZoomableGroup center={[50.0, 400]} zoom={1}>
 					<Geographies geography="https://raw.githubusercontent.com/deldersveld/topojson/master/world-countries.json">
 						{({ geographies }) =>
