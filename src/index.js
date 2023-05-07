@@ -7,6 +7,7 @@ import './index.css';
 import reportWebVitals from './reportWebVitals';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import 'antd/dist/reset.css';
 
 const queryClient = new QueryClient();
 

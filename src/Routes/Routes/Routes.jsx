@@ -11,6 +11,7 @@ import Login from './../../pages/Login/Login';
 import CreatePortfolioHome from '../../pages/Dashboard/Admin/CreatePortfolioHome/CreatePortfolioHome';
 import Recommendation from '../../pages/Dashboard/Admin/Recommendation/Recommendation';
 import Projects from '../../pages/Dashboard/Admin/Projects/Projects';
+import VideoLibrary from '../../pages/Dashboard/Admin/VideoLibrary/VideoLibrary';
 
 export const router = createBrowserRouter([
 	//* normal main route
@@ -66,6 +67,10 @@ export const router = createBrowserRouter([
 			{
 				path: '/dashboard/admin/projects',
 				element: <Projects />,
+			},
+			{
+				path: '/dashboard/admin/videolibrary',
+				element: <VideoLibrary />,
 			},
 		],
 	},
