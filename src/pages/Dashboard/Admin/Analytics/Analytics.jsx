@@ -44,11 +44,11 @@ const Analytics = () => {
 
 				<div className="flex flex-col lg:flex-row gap-8">
 					{/* Map card */}
-					<div className="bg-[#FFBC0F] rounded-[20px] p-5 lg:w-2/4 ">
+					<div className="bg-[#FFBC0F] rounded-[20px] p-5 lg:w-2/4 lg:h-[376px]">
 						<div className="mb-6">
 							<h1 className="flex items-center gap-2">
 								{' '}
-								<BiWorld className=" text-6xl" />{' '}
+								<BiWorld className="text-2xl " />{' '}
 								<span className="text-[18px] font-medium">Top Four</span>{' '}
 							</h1>
 						</div>
