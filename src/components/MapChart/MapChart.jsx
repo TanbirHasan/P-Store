@@ -6,8 +6,8 @@ import { ComposableMap, Geographies, Geography, ZoomableGroup } from 'react-simp
 const MapChart = () => {
 	const [content, setContent] = useState('');
 	return (
-		<div className="w-full ">
-			<ComposableMap height={200} width={400}>
+		<div className="w-full cursor-grab ">
+			<ComposableMap height={185} width={400}>
 				<ZoomableGroup center={[50.0, 400]} zoom={1}>
 					<Geographies geography="https://raw.githubusercontent.com/deldersveld/topojson/master/world-countries.json">
 						{({ geographies }) =>
@@ -24,7 +24,7 @@ const MapChart = () => {
 										}}
 										style={{
 											default: {
-												fill: "#010101",
+												fill: '#010101',
 												strokeWidth: 0.75,
 											},
 											hover: {
