@@ -1,10 +1,10 @@
+import { Radio } from '@mui/material';
+import { yellow } from '@mui/material/colors';
 import React, { useEffect, useState } from 'react';
 import { BiWorld } from 'react-icons/bi';
 import filterIcon from '../../../../assets/icons/filter-icon.svg';
 import MapChart from '../../../../components/MapChart/MapChart';
 import AnalyticsModal from '../../../../components/Modal/AnalyticsModal/AnalyticsModal';
-import { Radio } from '@mui/material';
-import { yellow } from '@mui/material/colors';
 
 const Analytics = () => {
 	const [primaryAnalyticsPopup, setPrimaryAnalyticsPopup] = useState(false);
@@ -64,7 +64,7 @@ const Analytics = () => {
 									Watched <br /> Live
 								</h1>
 							</div>
-							<div className="relative bottom-6">
+							<div className="relative bottom-[19px]">
 								<div className="bg-white h-[30px] w-[30px] rounded-full mx-auto"></div>
 								<h1 className="text-white font-semibold text-[17px] text-center">Downloads</h1>
 							</div>
