@@ -112,6 +112,15 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 
 /* global p margin bottom removed */
 
-p{
-  margin-bottom: 0px!important;
+p {
+  margin-bottom: 0px !important;
+}
+
+.custom-upload-width .ant-upload-select {
+  width: 100% !important;
+}
+
+.custom-selected .Mui-selected {
+  color: green;
+  background-color: #61dafb;
 }

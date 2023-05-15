@@ -32,7 +32,7 @@ const Branding = () => {
 		reset,
 	} = useForm();
 
-	const navigate = useNavigate()
+	const navigate = useNavigate();
 
 	const [client, setClient] = useState('');
 	const [clientError, setClientError] = useState('');
@@ -117,7 +117,7 @@ const Branding = () => {
 		};
 
 		console.log(brandingData);
-		navigate('/dashboard/admin/createPortfolio-home')
+		navigate('/dashboard/admin/createPortfolio-home');
 	};
 
 	return (
@@ -125,7 +125,7 @@ const Branding = () => {
 			{/* PORTAL Header part */}
 			<div className="p-6 border border-[#ffbc0f66] flex items-center gap-[5px]">
 				<div>
-					<h1 className="text-xl font-semibold leading-6">Portal</h1>
+					<p className="text-xl font-semibold leading-6">Portal</p>
 				</div>
 				<button type="button">
 					<InfoIcon className="text-[#ffbc0f]" />
@@ -184,7 +184,7 @@ const Branding = () => {
 				<div className="flex items-center justify-between mb-5">
 					<div className="flex items-center gap-[5px]">
 						<div>
-							<h1 className="font-medium">Custom Terms & Conditions URL</h1>
+							<p className="font-medium">Custom Terms & Conditions URL</p>
 						</div>
 						<button onClick={() => toast.success('This feature is coming soon')} type="button">
 							<InfoIcon className="text-[#ffbc0f]" />
@@ -454,7 +454,9 @@ const Branding = () => {
 			</div>
 
 			{/* Save button */}
-			<button className='h-[80px] bg-[#FFBC0F] rounded-[3px] px-[32px] font-bold' type="submit">Save & Next</button>
+			<button className="h-[80px] bg-[#FFBC0F] rounded-[3px] px-[32px] font-bold" type="submit">
+				Save & Next
+			</button>
 		</form>
 	);
 };

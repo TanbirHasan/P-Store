@@ -4,17 +4,19 @@ import MainLayout from '../../Layouts/MainLayout/MainLayout';
 import AllPortfolios from '../../pages/Dashboard/Admin/AllPortfolios/AllPortfolios';
 import Analytics from '../../pages/Dashboard/Admin/Analytics/Analytics';
 import Branding from '../../pages/Dashboard/Admin/Branding/Branding';
+import CreatePortfolioHome from '../../pages/Dashboard/Admin/CreatePortfolioHome/CreatePortfolioHome';
+import Projects from '../../pages/Dashboard/Admin/Projects/Projects';
+import Recommendation from '../../pages/Dashboard/Admin/Recommendation/Recommendation';
+import UserBasicInformation from '../../pages/Dashboard/Admin/UserBasicInformation/UserBasicInformation';
+import UserEducationInformation from '../../pages/Dashboard/Admin/UserEducationInformation/UserEducationInformation';
 import Users from '../../pages/Dashboard/Admin/Users/Users';
+import VideoLibrary from '../../pages/Dashboard/Admin/VideoLibrary/VideoLibrary';
 import AdminHome from './../../pages/Dashboard/Admin/AdminHome/AdminHome';
 import Organization from './../../pages/Dashboard/Admin/Organization/Organization';
 import Login from './../../pages/Login/Login';
-import CreatePortfolioHome from '../../pages/Dashboard/Admin/CreatePortfolioHome/CreatePortfolioHome';
-import Recommendation from '../../pages/Dashboard/Admin/Recommendation/Recommendation';
-import Projects from '../../pages/Dashboard/Admin/Projects/Projects';
-import VideoLibrary from '../../pages/Dashboard/Admin/VideoLibrary/VideoLibrary';
 
 export const router = createBrowserRouter([
-	//* normal main route
+	// normal main route
 	{
 		path: '/',
 		element: <MainLayout />,
@@ -26,7 +28,7 @@ export const router = createBrowserRouter([
 		],
 	},
 
-	//* for admin routes
+	// for ADMIN routes
 
 	{
 		path: '/dashboard',
@@ -71,6 +73,14 @@ export const router = createBrowserRouter([
 			{
 				path: '/dashboard/admin/videolibrary',
 				element: <VideoLibrary />,
+			},
+			{
+				path: '/dashboard/admin/basic-user-info',
+				element: <UserBasicInformation />,
+			},
+			{
+				path: '/dashboard/admin/user-education-info',
+				element: <UserEducationInformation />,
 			},
 		],
 	},

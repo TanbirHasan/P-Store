@@ -100,8 +100,8 @@ const CreatePortfolioHome = () => {
 							placeholder="Enter portfolio introduction"
 							{...register('portfolioIntroduction2')}
 							className={`w-full  border border-[#FFD333] focus:outline-0 focus:ring-0 focus:ring-transparent focus:border-[1.5px] focus:border-[#FFD333]  rounded-[3px]  mt-4`}
-							name=""
-							id=""
+							name="portfolioIntroduction2"
+							id="portfolioIntroduction2"
 							cols="30"
 							rows="3"></textarea>
 					</div>
