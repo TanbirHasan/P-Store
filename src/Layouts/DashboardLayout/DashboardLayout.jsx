@@ -1,8 +1,9 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import { AiFillHome } from 'react-icons/ai';
+import { HiInformationCircle } from 'react-icons/hi';
+import {  MdSchool } from 'react-icons/md';
 import { Menu, Sidebar, useProSidebar } from 'react-pro-sidebar';
 import { Link, Outlet, ScrollRestoration, useLocation, useNavigate } from 'react-router-dom';
-import { AiFillHome } from 'react-icons/ai';
-import { useEffect } from 'react';
 import analyticsDarkVesion from '../../assets/icons/analytics-dark-version.svg';
 import analytics from '../../assets/icons/analytics.svg';
 import organizationDarkVersion from '../../assets/icons/dark-organization-icon.svg';
@@ -11,16 +12,15 @@ import dashboardIconDark from '../../assets/icons/dashboard.svg';
 import organization from '../../assets/icons/organization.svg';
 import portalDark from '../../assets/icons/portal-dark.svg';
 import portal from '../../assets/icons/portal.svg';
+import projectsDark from '../../assets/icons/projects-dark.svg';
+import projects from '../../assets/icons/projects.svg';
+import recommendationDark from '../../assets/icons/recommendation-dark.svg';
+import recommendation from '../../assets/icons/recommendation.svg';
 import userIconDark from '../../assets/icons/user-dark-version.svg';
 import userIcon from '../../assets/icons/users.svg';
-import DashboardNavbar from '../../components/DashboardNavbar/DashboardNavbar';
-import recommendation from '../../assets/icons/recommendation.svg';
-import recommendationDark from '../../assets/icons/recommendation-dark.svg';
-import projects from '../../assets/icons/projects.svg';
-import projectsDark from '../../assets/icons/projects-dark.svg';
-import videoLibrary from '../../assets/icons/videoLibrary.svg';
 import videoLibraryDark from '../../assets/icons/videoLibrary-dark.svg';
-
+import videoLibrary from '../../assets/icons/videoLibrary.svg';
+import DashboardNavbar from '../../components/DashboardNavbar/DashboardNavbar';
 
 const DashboardLayout = () => {
 	const { toggleSidebar, collapseSidebar, broken, collapsed } = useProSidebar();
@@ -382,7 +382,6 @@ const DashboardLayout = () => {
 													</div>
 												</Link>
 
-
 												{/* Video Library */}
 												<Link to={'/dashboard/admin/videolibrary'}>
 													<div
@@ -394,16 +393,16 @@ const DashboardLayout = () => {
 														<li className="my-[3px] flex cursor-pointer items-center px-3 text-[20px]">
 															{activeRoute('/dashboard/admin/videolibrary') === true ? (
 																<img
-																src={videoLibraryDark}
-																alt="recommendationDark-icon"
-																className={`w-[20px] h-[20px]`}
-															/>
-														) : (
-															<img
-																src={videoLibrary}
-																alt="recommendation-icon"
-																className={`w-[20px] h-[20px]`}
-															/>
+																	src={videoLibraryDark}
+																	alt="recommendationDark-icon"
+																	className={`w-[20px] h-[20px]`}
+																/>
+															) : (
+																<img
+																	src={videoLibrary}
+																	alt="recommendation-icon"
+																	className={`w-[20px] h-[20px]`}
+																/>
 															)}
 
 															<p
@@ -413,6 +412,64 @@ const DashboardLayout = () => {
 																		: 'font-medium'
 																} `}>
 																Video Library
+															</p>
+														</li>
+													</div>
+												</Link>
+
+												{/* Basic User Information */}
+												<Link to={'/dashboard/admin/basic-user-info'}>
+													<div
+														className={`relative  py-3 flex hover:cursor-pointer text-lg rounded-[3px] mb-2  ${
+															activeRoute('/dashboard/admin/basic-user-info') === true
+																? 'font-bold bg-[#FFBC0F]'
+																: 'font-medium '
+														}`}>
+														<li className="my-[3px] flex cursor-pointer items-center px-3 text-[20px]">
+															<HiInformationCircle
+																className={`${
+																	activeRoute('/dashboard/admin/basic-user-info') === true
+																		? 'text-black '
+																		: 'text-[#FFBC0F] '
+																}`}
+															/>
+
+															<p
+																className={`leading-5 ml-[10px] flex ${
+																	activeRoute('/dashboard/admin/basic-user-info') === true
+																		? 'font-bold'
+																		: 'font-medium'
+																} `}>
+																Basic Info
+															</p>
+														</li>
+													</div>
+												</Link>
+
+												{/*  User Education Information */}
+												<Link to={'/dashboard/admin/user-education-info'}>
+													<div
+														className={`relative  py-3 flex hover:cursor-pointer text-lg rounded-[3px] mb-2  ${
+															activeRoute('/dashboard/admin/user-education-info') === true
+																? 'font-bold bg-[#FFBC0F]'
+																: 'font-medium '
+														}`}>
+														<li className="my-[3px] flex cursor-pointer items-center px-3 text-[20px]">
+															<MdSchool
+																className={`${
+																	activeRoute('/dashboard/admin/user-education-info') === true
+																		? 'text-black '
+																		: 'text-[#FFBC0F] '
+																}`}
+															/>
+
+															<p
+																className={`leading-5 ml-[10px] flex ${
+																	activeRoute('/dashboard/admin/user-education-info') === true
+																		? 'font-bold'
+																		: 'font-medium'
+																} `}>
+																Education Info
 															</p>
 														</li>
 													</div>
