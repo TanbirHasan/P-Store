@@ -14,6 +14,7 @@ import VideoLibrary from '../../pages/Dashboard/Admin/VideoLibrary/VideoLibrary'
 import AdminHome from './../../pages/Dashboard/Admin/AdminHome/AdminHome';
 import Organization from './../../pages/Dashboard/Admin/Organization/Organization';
 import Login from './../../pages/Login/Login';
+import PortfolioHome from '../../components/PortfolioTemplate/PortfolioHome';
 
 export const router = createBrowserRouter([
 	// normal main route
@@ -82,6 +83,12 @@ export const router = createBrowserRouter([
 				path: '/dashboard/admin/user-education-info',
 				element: <UserEducationInformation />,
 			},
+			
 		],
+
+	},
+	{
+		path: '/portfoliohome',
+		element: <PortfolioHome />,
 	},
 ]);
