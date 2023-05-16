@@ -43,7 +43,7 @@ const DashboardLayout = () => {
 
 	return (
 		<div className="#FAFAFA">
-			<div className="flex">
+			<div className="flex flex-grow">
 				<div className="lg:w-[300px]">
 					<Sidebar
 						backgroundColor="#FAFAFA"

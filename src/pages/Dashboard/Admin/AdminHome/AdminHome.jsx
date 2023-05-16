@@ -24,7 +24,7 @@ const AdminHome = () => {
 						Welcome to Our <span className="font-extrabold text-[#FFBC0F]">Portfolio</span> WebSite
 					</h1>
 
-					<div className="flex gap-8 my-8 ">
+					<div className="flex flex-col lg:flex-row gap-8 my-8 ">
 						<div className="bg-[#1970FE] text-white py-5 px-7 w-full h-[132px] rounded-[3px] flex items-center gap-7">
 							<div className="w-[92px] h-[92px] border-[10px] border-white rounded-full"></div>
 							<div className="font-bold leading-7">
@@ -54,7 +54,7 @@ const AdminHome = () => {
 					</div>
 
 					{/* Portal cards */}
-					<div className="grid grid-cols-2 gap-x-4 gap-y-8">
+					<div className="grid lg:grid-cols-2 gap-x-4 gap-y-8">
 						<div className="flex items-center p-4 border border-[#ffbc0f7f] shadow-custom gap-6 w-full">
 							<img src={portfolio1} alt="" className="" />
 
