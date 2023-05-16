@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
 
+
 const UserEducationInformation = () => {
 	const {
 		register,
@@ -31,6 +32,7 @@ const UserEducationInformation = () => {
 	};
 
 	return (
+		<>
 		<form onSubmit={handleSubmit(handleEducationInformation)}>
 			<div className="p-6 border border-[#ffbc0f66] flex items-center gap-[5px]">
 				<div>
@@ -143,6 +145,10 @@ const UserEducationInformation = () => {
 				Save & Next
 			</button>
 		</form>
+		
+
+		</>
+		
 	);
 };
 
