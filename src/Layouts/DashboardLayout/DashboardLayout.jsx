@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { AiFillHome } from 'react-icons/ai';
 import { GiSkills } from 'react-icons/gi';
 import { HiInformationCircle } from 'react-icons/hi';
+import { FaSuitcase } from 'react-icons/fa';
 import { MdSchool } from 'react-icons/md';
 import { Menu, Sidebar, useProSidebar } from 'react-pro-sidebar';
 import { Link, Outlet, ScrollRestoration, useLocation, useNavigate } from 'react-router-dom';
@@ -54,16 +55,18 @@ const DashboardLayout = () => {
 						breakPoint="lg">
 						<aside className="flex flex-col  h-screen  py-8 overflow-y-auto  border-r  ">
 							<div className="flex flex-col  flex-1 mt-6 mb-20">
-								<div className='mb-16'>
-								<Link to={'/'} className="">
-									<h1 className="uppercase text-[30px] text-center font-extrabold italic">
-										PORTFOLIO
-									</h1>
-								</Link>
+								<div className="mb-16">
+									<Link to={'/'} className="">
+										<h1 className="uppercase text-[30px] text-center font-extrabold italic">
+											PORTFOLIO
+										</h1>
+									</Link>
 
-								<Link to="/portfoliohome">
-									<div className='uppercase text-[20px] text-center font-extrabold italic'>PortfolioHome</div>
-								</Link>
+									<Link to="/portfoliohome">
+										<div className="uppercase text-[20px] text-center font-extrabold italic">
+											PortfolioHome
+										</div>
+									</Link>
 								</div>
 
 								<Menu>
@@ -506,6 +509,35 @@ const DashboardLayout = () => {
 																		: 'font-medium'
 																} `}>
 																Skills
+															</p>
+														</li>
+													</div>
+												</Link>
+
+												{/*  User Experience */}
+												<Link to={'/dashboard/admin/user-experience'}>
+													<div
+														className={`relative  py-3 flex hover:cursor-pointer text-lg rounded-[3px] mb-2  ${
+															activeRoute('/dashboard/admin/user-experience') === true
+																? 'font-bold bg-[#FFBC0F]'
+																: 'font-medium '
+														}`}>
+														<li className="my-[3px] flex cursor-pointer items-center px-3 text-[20px]">
+															<FaSuitcase
+																className={`${
+																	activeRoute('/dashboard/admin/user-experience') === true
+																		? 'text-black '
+																		: 'text-[#FFBC0F] '
+																}`}
+															/>
+
+															<p
+																className={`leading-5 ml-[10px] flex ${
+																	activeRoute('/dashboard/admin/user-experience') === true
+																		? 'font-bold'
+																		: 'font-medium'
+																} `}>
+																Experience
 															</p>
 														</li>
 													</div>
