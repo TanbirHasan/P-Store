@@ -15,6 +15,7 @@ import AdminHome from './../../pages/Dashboard/Admin/AdminHome/AdminHome';
 import Organization from './../../pages/Dashboard/Admin/Organization/Organization';
 import Login from './../../pages/Login/Login';
 import PortfolioHome from '../../components/PortfolioTemplate/PortfolioHome';
+import UserSkill from '../../pages/Dashboard/Admin/UserSkill/UserSkill';
 
 export const router = createBrowserRouter([
 	// normal main route
@@ -82,6 +83,10 @@ export const router = createBrowserRouter([
 			{
 				path: '/dashboard/admin/user-education-info',
 				element: <UserEducationInformation />,
+			},
+			{
+				path: '/dashboard/admin/user-skills',
+				element: <UserSkill />,
 			},
 			
 		],
