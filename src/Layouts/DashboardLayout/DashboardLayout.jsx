@@ -4,6 +4,7 @@ import { GiSkills } from 'react-icons/gi';
 import { HiInformationCircle } from 'react-icons/hi';
 import { FaSuitcase } from 'react-icons/fa';
 import { MdSchool } from 'react-icons/md';
+import { GiTalk } from 'react-icons/gi';
 import { Menu, Sidebar, useProSidebar } from 'react-pro-sidebar';
 import { Link, Outlet, ScrollRestoration, useLocation, useNavigate } from 'react-router-dom';
 import analyticsDarkVesion from '../../assets/icons/analytics-dark-version.svg';
@@ -538,6 +539,35 @@ const DashboardLayout = () => {
 																		: 'font-medium'
 																} `}>
 																Experience
+															</p>
+														</li>
+													</div>
+												</Link>
+
+												{/*  Testimonial */}
+												<Link to={'/dashboard/admin/testimonial'}>
+													<div
+														className={`relative  py-3 flex hover:cursor-pointer text-lg rounded-[3px] mb-2  ${
+															activeRoute('/dashboard/admin/testimonial') === true
+																? 'font-bold bg-[#FFBC0F]'
+																: 'font-medium '
+														}`}>
+														<li className="my-[3px] flex cursor-pointer items-center px-3 text-[20px]">
+															<GiTalk
+																className={`${
+																	activeRoute('/dashboard/admin/testimonial') === true
+																		? 'text-black '
+																		: 'text-[#FFBC0F] '
+																}`}
+															/>
+
+															<p
+																className={`leading-5 ml-[10px] flex ${
+																	activeRoute('/dashboard/admin/testimonial') === true
+																		? 'font-bold'
+																		: 'font-medium'
+																} `}>
+																Testimonial
 															</p>
 														</li>
 													</div>

@@ -8,6 +8,7 @@ import Branding from '../../pages/Dashboard/Admin/Branding/Branding';
 import CreatePortfolioHome from '../../pages/Dashboard/Admin/CreatePortfolioHome/CreatePortfolioHome';
 import Projects from '../../pages/Dashboard/Admin/Projects/Projects';
 import Recommendation from '../../pages/Dashboard/Admin/Recommendation/Recommendation';
+import TestimonialInfo from '../../pages/Dashboard/Admin/TestimonialInfo/TestimonialInfo';
 import UserBasicInformation from '../../pages/Dashboard/Admin/UserBasicInformation/UserBasicInformation';
 import UserEducationInformation from '../../pages/Dashboard/Admin/UserEducationInformation/UserEducationInformation';
 import UserExperience from '../../pages/Dashboard/Admin/UserExperience/UserExperience';
@@ -92,6 +93,10 @@ export const router = createBrowserRouter([
 			{
 				path: '/dashboard/admin/user-experience',
 				element: <UserExperience />,
+			},
+			{
+				path: '/dashboard/admin/testimonial',
+				element: <TestimonialInfo />,
 			},
 		],
 	},
