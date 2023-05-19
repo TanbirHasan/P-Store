@@ -1,7 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { AiFillHome } from 'react-icons/ai';
+import { GiSkills } from 'react-icons/gi';
 import { HiInformationCircle } from 'react-icons/hi';
-import {  MdSchool } from 'react-icons/md';
+import { FaSuitcase } from 'react-icons/fa';
+import { MdSchool } from 'react-icons/md';
+import { GiTalk } from 'react-icons/gi';
 import { Menu, Sidebar, useProSidebar } from 'react-pro-sidebar';
 import { Link, Outlet, ScrollRestoration, useLocation, useNavigate } from 'react-router-dom';
 import analyticsDarkVesion from '../../assets/icons/analytics-dark-version.svg';
@@ -19,7 +22,7 @@ import recommendation from '../../assets/icons/recommendation.svg';
 import userIconDark from '../../assets/icons/user-dark-version.svg';
 import userIcon from '../../assets/icons/users.svg';
 import videoLibraryDark from '../../assets/icons/videoLibrary-dark.svg';
-import videoLibrary from '../../assets/icons/videolibrary.svg';
+import videoLibrary from '../../assets/icons/videoLibrary.svg';
 import DashboardNavbar from '../../components/DashboardNavbar/DashboardNavbar';
 
 const DashboardLayout = () => {
@@ -43,7 +46,7 @@ const DashboardLayout = () => {
 
 	return (
 		<div className="#FAFAFA">
-			<div className="flex">
+			<div className="flex flex-grow">
 				<div className="lg:w-[300px]">
 					<Sidebar
 						backgroundColor="#FAFAFA"
@@ -53,11 +56,19 @@ const DashboardLayout = () => {
 						breakPoint="lg">
 						<aside className="flex flex-col  h-screen  py-8 overflow-y-auto  border-r  ">
 							<div className="flex flex-col  flex-1 mt-6 mb-20">
-								<Link to={'/'} className="mb-16">
-									<h1 className="uppercase text-[30px] text-center font-extrabold italic">
-										PORTFOLIO
-									</h1>
-								</Link>
+								<div className="mb-16">
+									<Link to={'/'} className="">
+										<h1 className="uppercase text-[30px] text-center font-extrabold italic">
+											PORTFOLIO
+										</h1>
+									</Link>
+
+									<Link to="/portfoliohome">
+										<div className="uppercase text-[20px] text-center font-extrabold italic">
+											PortfolioHome
+										</div>
+									</Link>
+								</div>
 
 								<Menu>
 									<div className=" px-7">
@@ -475,10 +486,91 @@ const DashboardLayout = () => {
 													</div>
 												</Link>
 
-												<Link to="/portfoliohome">
-												   <div>
-													  PortfolioHome
-												   </div>
+												{/*  User Skills */}
+												<Link to={'/dashboard/admin/user-skills'}>
+													<div
+														className={`relative  py-3 flex hover:cursor-pointer text-lg rounded-[3px] mb-2  ${
+															activeRoute('/dashboard/admin/user-skills') === true
+																? 'font-bold bg-[#FFBC0F]'
+																: 'font-medium '
+														}`}>
+														<li className="my-[3px] flex cursor-pointer items-center px-3 text-[20px]">
+															<GiSkills
+																className={`${
+																	activeRoute('/dashboard/admin/user-skills') === true
+																		? 'text-black '
+																		: 'text-[#FFBC0F] '
+																}`}
+															/>
+
+															<p
+																className={`leading-5 ml-[10px] flex ${
+																	activeRoute('/dashboard/admin/user-skills') === true
+																		? 'font-bold'
+																		: 'font-medium'
+																} `}>
+																Skills
+															</p>
+														</li>
+													</div>
+												</Link>
+
+												{/*  User Experience */}
+												<Link to={'/dashboard/admin/user-experience'}>
+													<div
+														className={`relative  py-3 flex hover:cursor-pointer text-lg rounded-[3px] mb-2  ${
+															activeRoute('/dashboard/admin/user-experience') === true
+																? 'font-bold bg-[#FFBC0F]'
+																: 'font-medium '
+														}`}>
+														<li className="my-[3px] flex cursor-pointer items-center px-3 text-[20px]">
+															<FaSuitcase
+																className={`${
+																	activeRoute('/dashboard/admin/user-experience') === true
+																		? 'text-black '
+																		: 'text-[#FFBC0F] '
+																}`}
+															/>
+
+															<p
+																className={`leading-5 ml-[10px] flex ${
+																	activeRoute('/dashboard/admin/user-experience') === true
+																		? 'font-bold'
+																		: 'font-medium'
+																} `}>
+																Experience
+															</p>
+														</li>
+													</div>
+												</Link>
+
+												{/*  Testimonial */}
+												<Link to={'/dashboard/admin/testimonial'}>
+													<div
+														className={`relative  py-3 flex hover:cursor-pointer text-lg rounded-[3px] mb-2  ${
+															activeRoute('/dashboard/admin/testimonial') === true
+																? 'font-bold bg-[#FFBC0F]'
+																: 'font-medium '
+														}`}>
+														<li className="my-[3px] flex cursor-pointer items-center px-3 text-[20px]">
+															<GiTalk
+																className={`${
+																	activeRoute('/dashboard/admin/testimonial') === true
+																		? 'text-black '
+																		: 'text-[#FFBC0F] '
+																}`}
+															/>
+
+															<p
+																className={`leading-5 ml-[10px] flex ${
+																	activeRoute('/dashboard/admin/testimonial') === true
+																		? 'font-bold'
+																		: 'font-medium'
+																} `}>
+																Testimonial
+															</p>
+														</li>
+													</div>
 												</Link>
 											</>
 										)}

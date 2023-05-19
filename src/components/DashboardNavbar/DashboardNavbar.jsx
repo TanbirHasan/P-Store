@@ -21,8 +21,8 @@ const DashboardNavbar = () => {
 
 	return (
 		<nav className="bg-white w-full h-[106px] block  border-b-4 border-[#BFBFBF]">
-			<div className="flex h-full items-center justify-between px-8  ">
-				<div className="flex items-center lg:gap-x-24">
+			<div className="flex h-full items-center justify-between px-8   ">
+				<div className="flex items-center gap-10 lg:gap-x-24">
 					<div>
 						<img
 							src={dashboardMenu}
@@ -34,7 +34,7 @@ const DashboardNavbar = () => {
 						<input
 							type="text"
 							placeholder="Search Portfolio"
-							className={`lg:w-[500px] shadow-custom border-[#FFD333] py-3 px-4 focus:outline-none focus:ring-0 focus:border-[#FFD333] focus:shadow-custom`}
+							className={`w-full lg:w-[500px] shadow-custom border-[#FFD333] py-3 px-4 focus:outline-none focus:ring-0 focus:border-[#FFD333] focus:shadow-custom`}
 						/>
 						<div className="absolute bottom-[7px] right-[10px]">
 							<button className="w-[32px] h-[32px] bg-[#FFD333] rounded-[3px] border border-[#FFD333] ">
