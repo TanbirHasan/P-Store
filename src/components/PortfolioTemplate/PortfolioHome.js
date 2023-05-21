@@ -1,6 +1,8 @@
 import React, { useContext } from 'react';
 import { COLOR_CONTEXT } from './../../context/ColorProvider';
 import PortfolioAbout from './PortfolioAbout';
+import PortfolioContact from './PortfolioContact';
+import PortfolioEducation from './PortfolioEducation';
 import PortfolioNavbar from './PortfolioNavbar';
 import PortfolioProjects from './PortfolioProjects';
 import PortfolioSkills from './PortfolioSkills';
@@ -12,6 +14,8 @@ export default function PortfolioHome() {
 	const [showAbout, setShowAbout] = React.useState(false);
 	const [showProjects, setShowProjects] = React.useState(false);
 	const [showSkills, setShowSkills] = React.useState(false);
+	const [showContact, setShowContact] = React.useState(false);
+	const [showEducation, setShowEducation] = React.useState(false);
 
 	return (
 		<div className="" style={{ backgroundColor: backgroundColor, color: primaryColor }}>
@@ -19,6 +23,13 @@ export default function PortfolioHome() {
 				setShowAbout={setShowAbout}
 				setShowProjects={setShowProjects}
 				setShowSkills={setShowSkills}
+				setShowContact={setShowContact}
+				setShowEducation={setShowEducation}
+				showAbout={showAbout}
+				showProjects={showProjects}
+				showSkills={showSkills}
+				showContact={showContact}
+				showEducation={showEducation}
 			/>
 
 			{showAbout ? (
@@ -27,6 +38,10 @@ export default function PortfolioHome() {
 				<PortfolioSkills />
 			) : showProjects ? (
 				<PortfolioProjects />
+			) : showContact ? (
+				<PortfolioContact />
+			) : showEducation ? (
+				<PortfolioEducation />
 			) : (
 				<>
 					<div className="flex items-center justify-between gap-5 w-5/6 mx-auto mt-20">
