@@ -2,8 +2,7 @@ import React, { useContext } from 'react';
 import { COLOR_CONTEXT } from '../../context/ColorProvider';
 
 const PortfolioProjects = () => {
-
-    const { backgroundColor, primaryColor, secondaryColor, fontColor, fileList } =
+	const { backgroundColor, primaryColor, secondaryColor, fontColor, fileList } =
 		useContext(COLOR_CONTEXT);
 
 	const posts = [
@@ -45,14 +44,16 @@ const PortfolioProjects = () => {
 		},
 	];
 	return (
-		<section  className="mx-auto px-4  md:px-8 bg-white">
-			<div className="text-center p-5">
-				<h1 className="text-3xl text-gray-800 font-semibold">Projects</h1>
-				<p className="mt-3 text-gray-500">
+		<section
+			style={{ backgroundColor: primaryColor, color: fontColor, border: `1px solid ${backgroundColor}` }}
+			className="mx-auto px-4  md:px-8 bg-white">
+			<div className="text-center p-10">
+				<h1 className="text-3xl  font-semibold">Projects</h1>
+				<p className="mt-3 ">
 					Projects that are loved by the community. Updated every hour.
 				</p>
 			</div>
-			<div className="mt-12 grid gap-2 sm:grid-cols-2 lg:grid-cols-3">
+			<div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-3 py-20">
 				{posts.map((items, key) => (
 					<article
 						className="max-w-md mx-auto mt-4 shadow-lg border rounded-md duration-300 hover:shadow-sm"
@@ -73,13 +74,13 @@ const PortfolioProjects = () => {
 									/>
 								</div>
 								<div className="ml-3">
-									<span className="block text-gray-900">{items.authorName}</span>
-									<span className="block text-gray-400 text-sm">{items.date}</span>
+									<span className="block ">{items.authorName}</span>
+									<span className="block  text-sm">{items.date}</span>
 								</div>
 							</div>
 							<div className="pt-3 ml-4 mr-2 mb-3">
-								<h3 className="text-xl text-gray-900">{items.title}</h3>
-								<p className="text-gray-400 text-sm mt-1">{items.desc}</p>
+								<h3 className="text-xl ">{items.title}</h3>
+								<p className=" text-sm mt-1">{items.desc}</p>
 							</div>
 						</a>
 					</article>

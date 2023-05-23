@@ -18,7 +18,7 @@ export default function PortfolioHome() {
 	const [showEducation, setShowEducation] = React.useState(false);
 
 	return (
-		<div className="" style={{ backgroundColor: backgroundColor, color: primaryColor }}>
+		<div className="">
 			<PortfolioNavbar
 				setShowAbout={setShowAbout}
 				setShowProjects={setShowProjects}
@@ -44,7 +44,7 @@ export default function PortfolioHome() {
 				<PortfolioEducation />
 			) : (
 				<>
-					<div className="flex items-center justify-between gap-5 w-5/6 mx-auto mt-20">
+					<div className="flex items-center justify-between gap-5 lg:w-5/6 mx-auto mt-20">
 						<div className="p-5 lg:w-2/4">
 							{/* Here name , designation will be dynamic */}
 							<h4>Hello</h4>
