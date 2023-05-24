@@ -21,8 +21,8 @@ export default function PortfolioAbout() {
 	];
 	return (
 		<div className="">
-			<div className="flex items-center justify-between gap-5 w-5/6 mx-auto my-20">
-				<div className="p-5 lg:w-2/4">
+			<div className="flex flex-col-reverse md:flex-row items-center justify-between gap-5 mx-auto lg:w-5/6 my-20">
+				<div className="p-5 lg:w-2/4 mx-auto text-center md:text-left">
 					{/* Here name , designation will be dynamic */}
 					<h4>Hello</h4>
 					<h2 className="text-3xl">I'm Mark Andrew</h2>
@@ -33,10 +33,10 @@ export default function PortfolioAbout() {
 						JavaScript, React.js, express.js and some other cool libraries and frameworks
 					</p>
 				</div>
-				<div className="lg:w-2/4 flex justify-center">
+				<div className="lg:w-2/4 mx-auto justify-center">
 					{/* The image will be dynamic */}
 					{fileList[0]?.thumbUrl ? (
-						<img src={fileList[0]?.thumbUrl} alt="" className="w-[300px] h-[300px]" />
+						<img src={fileList[0]?.thumbUrl} alt="" className="w-[300px] h-[300px] mx-auto" />
 					) : (
 						<img
 							src="https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8dXNlcnN8ZW58MHx8MHx8&w=1000&q=80"
@@ -46,7 +46,7 @@ export default function PortfolioAbout() {
 					)}
 				</div>
 			</div>
-			<section style={{backgroundColor:primaryColor}} className="py-28 ">
+			<section style={{ backgroundColor: primaryColor }} className="py-28 ">
 				<div className="max-w-screen-xl mx-auto px-4 md:px-8">
 					<div className="max-w-2xl mx-auto text-center">
 						<h3 className="text-white text-3xl font-semibold sm:text-4xl">
