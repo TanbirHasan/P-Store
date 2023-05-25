@@ -124,3 +124,8 @@ p {
   color: green;
   background-color: #61dafb;
 }
+
+.MuiOutlinedInput-root .MuiAutocomplete-input .custom-skills-tag-input input {
+  border: 1px solid rgba(255, 188, 15, 0.5) !important;
+  border-radius: 3px !important;
+}
