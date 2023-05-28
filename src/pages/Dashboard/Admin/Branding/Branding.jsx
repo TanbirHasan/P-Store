@@ -393,7 +393,7 @@ const Branding = () => {
 						</div>
 
 						{loginBackgroundChecked ? (
-							<div className="lg:w-[600px]">
+							<div className="w-full lg:w-[600px]">
 								<Upload {...props}>
 									<div className="flex items-center justify-center gap-4 p-8">
 										<div>

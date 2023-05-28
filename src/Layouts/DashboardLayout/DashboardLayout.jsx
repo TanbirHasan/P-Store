@@ -46,7 +46,7 @@ const DashboardLayout = () => {
 
 	return (
 		<div className="#FAFAFA">
-			<div className="flex flex-grow">
+			<div className="flex">
 				<div className="lg:w-[300px]">
 					<Sidebar
 						backgroundColor="#FAFAFA"
@@ -581,7 +581,7 @@ const DashboardLayout = () => {
 					</Sidebar>
 				</div>
 
-				<div className="flex-grow">
+				<div className="lg:flex-grow w-full lg:w-[70%]">
 					<DashboardNavbar />
 					<div className="p-8">
 						<Outlet />

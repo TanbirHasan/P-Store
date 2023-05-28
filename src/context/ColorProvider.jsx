@@ -3,7 +3,7 @@ import React, { createContext, useState } from 'react';
 export const COLOR_CONTEXT = createContext();
 
 const ColorProvider = ({ children }) => {
-	const [backgroundColor, setBackgroundColor] = useState('#FFBC0F');
+	const [backgroundColor, setBackgroundColor] = useState('#0d0d0d');
 	const [primaryColor, setPrimaryColor] = useState('#0d0d0d');
 	const [secondaryColor, setSecondaryColor] = useState('#892c2c');
 	const [fontColor, setFontColor] = useState('#FFBC0F');

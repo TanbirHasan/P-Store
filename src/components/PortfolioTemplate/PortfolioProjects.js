@@ -45,13 +45,11 @@ const PortfolioProjects = () => {
 	];
 	return (
 		<section
-			style={{ backgroundColor: primaryColor, color: fontColor, border: `1px solid ${backgroundColor}` }}
+			style={{ backgroundColor: backgroundColor, color: fontColor }}
 			className="mx-auto px-4  md:px-8 bg-white">
 			<div className="text-center p-10">
 				<h1 className="text-3xl  font-semibold">Projects</h1>
-				<p className="mt-3 ">
-					Projects that are loved by the community. Updated every hour.
-				</p>
+				<p className="mt-3 ">Projects that are loved by the community. Updated every hour.</p>
 			</div>
 			<div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-3 py-20">
 				{posts.map((items, key) => (

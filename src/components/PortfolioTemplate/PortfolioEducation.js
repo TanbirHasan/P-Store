@@ -25,7 +25,7 @@ const PortfolioEducation = () => {
 
 	return (
 		<section
-			style={{ backgroundColor: primaryColor, color: fontColor, border: `1px solid ${backgroundColor}` }}
+			style={{ backgroundColor: backgroundColor, color: fontColor}}
 			className=" mx-auto px-4 md:px-8 pb-20">
 			<ul className="p-10 space-y-10 max-w-screen-lg mx-auto pt-20">
 				{jobs.map((item, idx) => (

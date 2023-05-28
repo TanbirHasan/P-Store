@@ -20,7 +20,7 @@ export default function PortfolioAbout() {
 		},
 	];
 	return (
-		<div className="">
+		<div  className="">
 			<div className="flex flex-col-reverse md:flex-row items-center justify-between gap-5 mx-auto lg:w-5/6 my-20">
 				<div className="p-5 lg:w-2/4 mx-auto text-center md:text-left">
 					{/* Here name , designation will be dynamic */}
@@ -40,7 +40,7 @@ export default function PortfolioAbout() {
 					) : (
 						<img
 							src="https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8dXNlcnN8ZW58MHx8MHx8&w=1000&q=80"
-							className="w-[300px] h-[300px]"
+							className="w-[300px] h-[300px] mx-auto"
 							alt="person"
 						/>
 					)}

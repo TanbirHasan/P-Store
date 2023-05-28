@@ -51,7 +51,6 @@ const DashboardNavbar = () => {
 							aria-expanded={open ? 'true' : undefined}
 							onClick={handleClick}
 							sx={{
-								borderColor: 'yellow',
 								borderWidth: 2,
 								width: 56,
 								height: 56,

@@ -19,7 +19,7 @@ export default function PortfolioNavbar({
 	const [state, setState] = useState(false);
 
 	return (
-		<header style={{ color: fontColor, backgroundColor: primaryColor }}>
+		<header style={{ color: fontColor, backgroundColor: backgroundColor,borderBottom:`1px solid ${fontColor}` }}>
 			<div className="flex justify-between items-center px-5 py-4 md:hidden">
 				<div>
 					{fileList.length ? (
@@ -157,13 +157,7 @@ export default function PortfolioNavbar({
 				className={` flex-col md:flex-row w-5/6 justify-between mx-auto py-5 items-center text-center space-y-10 ${
 					state ? 'flex' : 'hidden'
 				}`}>
-				<div>
-					{fileList.length ? (
-						<img src={fileList[0]?.thumbUrl} alt="" className="w-16 h-16 rounded-full" />
-					) : (
-						<h1 className="font-bold text-[25px]">LOGO</h1>
-					)}
-				</div>
+				
 				<div>
 					<ul className="flex flex-col md:flex-row gap-5">
 						<li
