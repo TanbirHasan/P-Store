@@ -5,10 +5,12 @@ import Chip from '@mui/material/Chip';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Slider from '@mui/material/Slider';
 import TextField from '@mui/material/TextField';
+import axios from 'axios';
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
+import { baseURL } from '../../../../baseURL';
 
 const valuetext = (value) => {
 	return `${value}C`;
@@ -54,7 +56,6 @@ const UserSkill = () => {
 		register,
 		handleSubmit,
 		formState: { errors },
-		
 	} = useForm();
 
 	const navigate = useNavigate();
@@ -73,6 +74,11 @@ const UserSkill = () => {
 			skills,
 			strengthValue,
 		};
+
+		axios.post(`${baseURL}/api/v1/userSkills`, skillsInfo).then((res) => {
+			console.log(res);
+		});
+
 		console.log(skillsInfo);
 	};
 
@@ -99,7 +105,7 @@ const UserSkill = () => {
 							freeSolo
 							renderTags={(value, getTagProps) =>
 								value.map((option, index) => (
-									<Chip variant="outlined"  label={option} {...getTagProps({ index })} />
+									<Chip variant="outlined" label={option} {...getTagProps({ index })} />
 								))
 							}
 							renderInput={(params) => (

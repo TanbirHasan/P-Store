@@ -1,40 +1,61 @@
-import React, { useContext } from 'react';
+import { useQuery } from '@tanstack/react-query';
+import axios from 'axios';
+import React, { useContext, useState } from 'react';
+import { baseURL } from '../../baseURL';
 import { COLOR_CONTEXT } from './../../context/ColorProvider';
+
+const stats = [
+	{
+		data: '35K',
+		title: 'Customers',
+	},
+	{
+		data: '40+',
+		title: 'Countries',
+	},
+	{
+		data: '30M+',
+		title: 'Total revenue',
+	},
+];
 
 export default function PortfolioAbout() {
 	const { backgroundColor, primaryColor, secondaryColor, fontColor, fileList } =
 		useContext(COLOR_CONTEXT);
 
-	const stats = [
-		{
-			data: '35K',
-			title: 'Customers',
-		},
-		{
-			data: '40+',
-			title: 'Countries',
-		},
-		{
-			data: '30M+',
-			title: 'Total revenue',
-		},
-	];
+	const [file, setFile] = useState();
+
+	// axios
+
+	const {
+		isLoading,
+		error,
+		data: userInfo,
+	} = useQuery({
+		queryKey: ['userInfo'],
+		queryFn: () =>
+			axios.get(`${baseURL}/api/v1/usersBasicInfo/sajid@gmail.com`).then((res) => res.data.data),
+	});
+
+	if (isLoading) return <div>Loading...</div>;
+	if (error) return <div>Error</div>;
+
+	const { about, name, image } = userInfo;
+
+	// const imageURL = window.URL.createObjectURL(image[0])
+	// console.log(imageURL);
+
 	return (
-		<div  className="">
+		<div className="">
 			<div className="flex flex-col-reverse md:flex-row items-center justify-between gap-5 mx-auto lg:w-5/6 my-20">
 				<div className="p-5 lg:w-2/4 mx-auto text-center md:text-left">
 					{/* Here name , designation will be dynamic */}
 					<h4>Hello</h4>
-					<h2 className="text-3xl">I'm Mark Andrew</h2>
+					<h2 className="text-3xl">I'm {name}</h2>
 					<h3 className="text-xl">A passionate {}</h3>
-					<p>
-						Hi, I am from Chittagong, Bangladesh. I am currently pursuing BSc. in Information
-						Technology. I am a passionate Web Developer who loves building Web applications with
-						JavaScript, React.js, express.js and some other cool libraries and frameworks
-					</p>
+					<p>{about}</p>
 				</div>
 				<div className="lg:w-2/4 mx-auto justify-center">
-					{/* The image will be dynamic */}
 					{fileList[0]?.thumbUrl ? (
 						<img src={fileList[0]?.thumbUrl} alt="" className="w-[300px] h-[300px] mx-auto" />
 					) : (
@@ -44,6 +65,7 @@ export default function PortfolioAbout() {
 							alt="person"
 						/>
 					)}
+					{/* <img src={imageURL} alt="" className="w-[300px] h-[300px] mx-auto" /> */}
 				</div>
 			</div>
 			<section style={{ backgroundColor: primaryColor }} className="py-28 ">

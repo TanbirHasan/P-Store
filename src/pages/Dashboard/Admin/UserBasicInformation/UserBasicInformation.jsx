@@ -3,9 +3,11 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 import ToggleButton from '@mui/material/ToggleButton';
 import ToggleButtonGroup from '@mui/material/ToggleButtonGroup';
 import { Upload } from 'antd';
+import axios from 'axios';
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
+import { baseURL } from '../../../../baseURL';
 
 const theme = createTheme({
 	palette: {
@@ -63,7 +65,6 @@ const UserBasicInformation = () => {
 	};
 
 	const handleBasicUserInformation = (data) => {
-
 		const { name, email, address, phone, about, linkedin, facebook, skype, youtube } = data;
 
 		const userInformation = {
@@ -81,10 +82,13 @@ const UserBasicInformation = () => {
 			isSkypeActive,
 			youtube,
 			isYoutubeActive,
-        };
-        
-		console.log(userInformation);
+		};
 
+		axios.post(`${baseURL}/api/v1/usersBasicInfo`, userInformation).then((response) => {
+			console.log(response);
+		});
+
+		console.log(userInformation);
 	};
 
 	return (
@@ -315,7 +319,7 @@ const UserBasicInformation = () => {
 								<input
 									type="text"
 									placeholder="skype.com"
-									{...register('skype', { required: 'Skype is required' })}
+									{...register('skype')}
 									className={`w-full  border border-[#FFD333] focus:outline-0 focus:ring-0 focus:ring-transparent focus:border-[1.5px] focus:border-[#FFD333]  rounded-[3px] h-[60px] mt-4 ${
 										errors.skype && 'focus:border-red-600'
 									}`}
@@ -358,7 +362,7 @@ const UserBasicInformation = () => {
 								<input
 									type="text"
 									placeholder="youtube.com"
-									{...register('youtube', { required: 'Youtube is required' })}
+									{...register('youtube')}
 									className={`w-full  border border-[#FFD333] focus:outline-0 focus:ring-0 focus:ring-transparent focus:border-[1.5px] focus:border-[#FFD333]  rounded-[3px] h-[60px] mt-4 ${
 										errors.youtube && 'focus:border-red-600'
 									}`}

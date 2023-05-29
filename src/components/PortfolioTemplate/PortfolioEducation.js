@@ -1,40 +1,39 @@
+import { useQuery } from '@tanstack/react-query';
+import axios from 'axios';
 import React, { useContext } from 'react';
+import { baseURL } from '../../baseURL';
 import { COLOR_CONTEXT } from '../../context/ColorProvider';
 
 const PortfolioEducation = () => {
 	const { backgroundColor, primaryColor, secondaryColor, fileList, fontColor } =
 		useContext(COLOR_CONTEXT);
 
-	const jobs = [
-		{
-			title: 'Bangladesh School Muscat',
-			desc: 'Bangladesh School Muscat is a school for Bangladeshi children in Oman. The institute follows the British Curriculum.',
-			date: 'May 17, 2006 - May 17, 2017',
-		},
-		{
-			title: 'Sunshine Grammar School',
-			desc: 'Sunshine Grammar School is a British curriculum school located in Chittagong, Bangladesh. The school provides lessons in Edexcel and Cambridge International Examinations for IGCSE and A Levels.',
-			date: 'May 17, 2018 - Dec 17, 2018',
-		},
-		{
-			title: 'The DUX',
-			desc: 'The Dux School Opens A World Of Opportunity For Chattogram Students By Providing Them With A Superior Education In The Bangladesh, Through Preparation, For National And International University And A Future That Knows No Borders.',
-			date: 'Dec 17, 2018 - Nov 17, 2019',
-		},
-	];
+	const {
+		isLoading,
+		error,
+		data: userEducationInfo,
+	} = useQuery({
+		queryKey: ['userEducationInfo'],
+		queryFn: () =>
+			axios.get(`${baseURL}/api/v1/usersEducationInfo/sajid@gmail.com`).then((res) => res.data.data),
+	});
+
+	if (isLoading) return <div>Loading...</div>;
+	if (error) return <div>Error</div>;
 
 	return (
 		<section
 			style={{ backgroundColor: backgroundColor, color: fontColor}}
 			className=" mx-auto px-4 md:px-8 pb-20">
 			<ul className="p-10 space-y-10 max-w-screen-lg mx-auto pt-20">
-				{jobs.map((item, idx) => (
-					<li key={idx} className="p-5 bg-white rounded-md shadow-sm">
+				{userEducationInfo.map((item, idx) => (
+					<li key={item._id} className="p-5 bg-white rounded-md shadow-sm">
 						<div>
 							<div className="justify-between sm:flex">
 								<div className="flex-1">
-									<h3 className="text-xl font-medium text-cyan-600">{item.title}</h3>
-									<p className="text-gray-500 mt-2 pr-2">{item.desc}</p>
+									<h3 className="text-xl font-medium text-cyan-600">{item.instituteName}</h3>
+									<p className="text-gray-500 mt-2 pr-2">{item.degree}</p>
+									<p className="text-gray-500 mt-2 pr-2">Grade = {item.grade}</p>
 								</div>
 								<div className="mt-5 space-y-4 text-sm sm:mt-0 sm:space-y-2">
 									<span className="flex items-center text-gray-500">
@@ -49,7 +48,8 @@ const PortfolioEducation = () => {
 												clipRule="evenodd"
 											/>
 										</svg>
-										{item.date}
+										
+										{item.startDate} - {item.endDate}
 									</span>
 								</div>
 							</div>
