@@ -8,14 +8,12 @@ const PortfolioContact = () => {
 	return (
 		<main
 			style={{
-				backgroundColor: primaryColor,
+				backgroundColor: backgroundColor,
 				color: fontColor,
-				border: `1px solid ${backgroundColor}`,
 			}}
 			className="py-14 bg-white">
 			<div className="max-w-screen-xl mx-auto px-4  md:px-8">
 				<div className="max-w-lg mx-auto space-y-3 sm:text-center">
-					<h3 className="text-indigo-600 font-semibold">Contact</h3>
 					<p className=" text-3xl font-semibold sm:text-4xl">Get in touch</p>
 					<p>
 						if you have any questions or concerns about my work, please feel free to contact me.
