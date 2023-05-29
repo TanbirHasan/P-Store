@@ -12,6 +12,8 @@ export default function PortfolioNavbar({
 	showSkills,
 	showContact,
 	showEducation,
+	showExperience,
+	setShowExperience,
 }) {
 	const { backgroundColor, primaryColor, secondaryColor, fileList, fontColor } =
 		useContext(COLOR_CONTEXT);
@@ -19,7 +21,12 @@ export default function PortfolioNavbar({
 	const [state, setState] = useState(false);
 
 	return (
-		<header style={{ color: fontColor, backgroundColor: backgroundColor,borderBottom:`1px solid ${fontColor}` }}>
+		<header
+			style={{
+				color: fontColor,
+				backgroundColor: backgroundColor,
+				borderBottom: `1px solid ${fontColor}`,
+			}}>
 			<div className="flex justify-between items-center px-5 py-4 md:hidden">
 				<div>
 					{fileList.length ? (
@@ -80,6 +87,8 @@ export default function PortfolioNavbar({
 								setShowSkills(false);
 								setShowContact(false);
 								setShowEducation(false);
+								setShowExperience(false);
+
 							}}
 							className={`font-semibold cursor-pointer hover:text-white `}>
 							Home
@@ -141,6 +150,20 @@ export default function PortfolioNavbar({
 								setShowAbout(false);
 								setShowProjects(false);
 								setShowSkills(false);
+								setShowContact(false);
+								setShowEducation(false);
+								setShowExperience(true);
+							}}
+							className={`font-semibold cursor-pointer hover:text-white ${
+								showExperience && 'text-white'
+							}`}>
+							Experience
+						</li>
+						<li
+							onClick={() => {
+								setShowAbout(false);
+								setShowProjects(false);
+								setShowSkills(false);
 								setShowContact(true);
 								setShowEducation(false);
 							}}
@@ -152,12 +175,12 @@ export default function PortfolioNavbar({
 					</ul>
 				</div>
 			</div>
+
 			{/* Mobile devices navbar */}
 			<div
 				className={` flex-col md:flex-row w-5/6 justify-between mx-auto py-5 items-center text-center space-y-10 ${
 					state ? 'flex' : 'hidden'
 				}`}>
-				
 				<div>
 					<ul className="flex flex-col md:flex-row gap-5">
 						<li
@@ -191,6 +214,8 @@ export default function PortfolioNavbar({
 								setShowSkills(true);
 								setShowContact(false);
 								setShowEducation(false);
+								setShowExperience(false);
+
 							}}
 							className={`font-semibold cursor-pointer hover:text-white ${
 								showSkills && 'text-white'
@@ -222,6 +247,20 @@ export default function PortfolioNavbar({
 								showEducation && 'text-white'
 							}`}>
 							Education
+						</li>
+						<li
+							onClick={() => {
+								setShowAbout(false);
+								setShowProjects(false);
+								setShowSkills(false);
+								setShowContact(false);
+								setShowEducation(false);
+								setShowExperience(true);
+							}}
+							className={`font-semibold cursor-pointer hover:text-white ${
+								showExperience && 'text-white'
+							}`}>
+							Experience
 						</li>
 						<li
 							onClick={() => {

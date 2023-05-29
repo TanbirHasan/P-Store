@@ -2,6 +2,7 @@ import { useQuery } from '@tanstack/react-query';
 import axios from 'axios';
 import React, { useContext, useState } from 'react';
 import { baseURL } from '../../baseURL';
+import FadeLoaderSpinner from '../Spinners/FadeLoaderSpinner';
 import { COLOR_CONTEXT } from './../../context/ColorProvider';
 
 const stats = [
@@ -37,7 +38,14 @@ export default function PortfolioAbout() {
 			axios.get(`${baseURL}/api/v1/usersBasicInfo/sajid@gmail.com`).then((res) => res.data.data),
 	});
 
-	if (isLoading) return <div>Loading...</div>;
+	if (isLoading)
+		return (
+			<div className="flex h-screen justify-center items-center w-full">
+				{' '}
+				<FadeLoaderSpinner size={150}  color={fontColor} />{' '}
+			</div>
+		);
+
 	if (error) return <div>Error</div>;
 
 	const { about, name, image } = userInfo;

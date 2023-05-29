@@ -1,8 +1,9 @@
-import React, { useContext } from 'react';
-import { COLOR_CONTEXT } from '../../context/ColorProvider';
 import { useQuery } from '@tanstack/react-query';
 import axios from 'axios';
+import React, { useContext } from 'react';
 import { baseURL } from '../../baseURL';
+import { COLOR_CONTEXT } from '../../context/ColorProvider';
+import FadeLoaderSpinner from '../Spinners/FadeLoaderSpinner';
 
 export default function PortfolioSkills() {
 	const { backgroundColor, primaryColor, secondaryColor, fontColor, fileList } =
@@ -18,7 +19,13 @@ export default function PortfolioSkills() {
 			axios.get(`${baseURL}/api/v1/userSkills/sajid@gmail.com`).then((res) => res.data.data),
 	});
 
-	if (isLoading) return <div>Loading...</div>;
+	if (isLoading)
+		return (
+			<div className="flex h-screen justify-center items-center w-full">
+				{' '}
+				<FadeLoaderSpinner size={150} color={fontColor} />{' '}
+			</div>
+		);
 	if (error) return <div>Error</div>;
 
 	const skills = userSkills[0].skills;

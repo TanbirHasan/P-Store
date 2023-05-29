@@ -3,6 +3,7 @@ import axios from 'axios';
 import React, { useContext } from 'react';
 import { baseURL } from '../../baseURL';
 import { COLOR_CONTEXT } from '../../context/ColorProvider';
+import FadeLoaderSpinner from '../Spinners/FadeLoaderSpinner';
 
 const PortfolioEducation = () => {
 	const { backgroundColor, primaryColor, secondaryColor, fileList, fontColor } =
@@ -18,7 +19,13 @@ const PortfolioEducation = () => {
 			axios.get(`${baseURL}/api/v1/usersEducationInfo/sajid@gmail.com`).then((res) => res.data.data),
 	});
 
-	if (isLoading) return <div>Loading...</div>;
+	if (isLoading)
+		return (
+			<div className="flex h-screen justify-center items-center w-full">
+				{' '}
+				<FadeLoaderSpinner size={150}  color={fontColor} />{' '}
+			</div>
+		);
 	if (error) return <div>Error</div>;
 
 	return (
