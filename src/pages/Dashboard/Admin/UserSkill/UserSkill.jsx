@@ -5,12 +5,14 @@ import Chip from '@mui/material/Chip';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Slider from '@mui/material/Slider';
 import TextField from '@mui/material/TextField';
+import { useQuery } from '@tanstack/react-query';
 import axios from 'axios';
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { baseURL } from '../../../../baseURL';
+import FadeLoaderSpinner from '../../../../components/Spinners/FadeLoaderSpinner';
 
 const valuetext = (value) => {
 	return `${value}C`;
@@ -60,10 +62,32 @@ const UserSkill = () => {
 
 	const navigate = useNavigate();
 
+	const {
+		isLoading,
+		error,
+		refetch,
+		data: userSkills,
+	} = useQuery({
+		queryKey: ['userSkills'],
+		queryFn: () =>
+			axios.get(`${baseURL}/api/v1/userSkills/sajid@gmail.com`).then((res) => res.data.data),
+	});
+
 	const [strengthValue, setStrengthValue] = useState(5);
 	const [showStrengthScale, setShowStrengthScale] = useState(false);
 	const [skills, setSkills] = useState([]);
 	const [skillsError, setSkillsError] = useState('');
+
+	if (isLoading)
+		return (
+			<div className="flex h-screen justify-center items-center w-full">
+				{' '}
+				<FadeLoaderSpinner size={150} />{' '}
+			</div>
+		);
+	if (error) return <div>Error</div>;
+
+	const skillsSet = userSkills[0]?.skills;
 
 	const handleUserSkills = () => {
 		if (!skills.length) {
@@ -75,11 +99,10 @@ const UserSkill = () => {
 			strengthValue,
 		};
 
-		axios.post(`${baseURL}/api/v1/userSkills`, skillsInfo).then((res) => {
+		axios.put(`${baseURL}/api/v1/userSkills/sajid@gmail.com`, skillsInfo).then((res) => {
 			console.log(res);
 		});
-
-		console.log(skillsInfo);
+		refetch();
 	};
 
 	return (
@@ -102,6 +125,7 @@ const UserSkill = () => {
 							}}
 							id="tags-filled"
 							options={skillOptions.map((option) => option.name)}
+							defaultValue={skillsSet.map((skill) => skill)}
 							freeSolo
 							renderTags={(value, getTagProps) =>
 								value.map((option, index) => (

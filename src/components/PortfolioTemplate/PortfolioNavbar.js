@@ -100,6 +100,7 @@ export default function PortfolioNavbar({
 								setShowSkills(false);
 								setShowContact(false);
 								setShowEducation(false);
+								setShowExperience(false);
 							}}
 							className={`font-semibold cursor-pointer hover:text-white ${
 								showAbout && 'text-white'
@@ -113,6 +114,7 @@ export default function PortfolioNavbar({
 								setShowSkills(true);
 								setShowContact(false);
 								setShowEducation(false);
+								setShowExperience(false);
 							}}
 							className={`font-semibold cursor-pointer hover:text-white ${
 								showSkills && 'text-white'
@@ -126,6 +128,7 @@ export default function PortfolioNavbar({
 								setShowSkills(false);
 								setShowContact(false);
 								setShowEducation(false);
+								setShowExperience(false);
 							}}
 							className={`font-semibold cursor-pointer hover:text-white ${
 								showProjects && 'text-white'
@@ -139,6 +142,7 @@ export default function PortfolioNavbar({
 								setShowSkills(false);
 								setShowContact(false);
 								setShowEducation(true);
+								setShowExperience(false);
 							}}
 							className={`font-semibold cursor-pointer hover:text-white ${
 								showEducation && 'text-white'
@@ -166,6 +170,7 @@ export default function PortfolioNavbar({
 								setShowSkills(false);
 								setShowContact(true);
 								setShowEducation(false);
+								setShowExperience(false);
 							}}
 							className={`font-semibold cursor-pointer hover:text-white ${
 								showContact && 'text-white'

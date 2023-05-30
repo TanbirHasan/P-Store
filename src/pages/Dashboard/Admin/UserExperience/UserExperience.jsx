@@ -3,9 +3,11 @@ import Checkbox from '@mui/material/Checkbox';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import MenuItem from '@mui/material/MenuItem';
 import Select from '@mui/material/Select';
+import axios from 'axios';
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
+import { baseURL } from '../../../../baseURL';
 
 const theme = createTheme({
 	palette: {
@@ -44,7 +46,12 @@ const UserExperience = () => {
 			startDate,
 			endDate,
 			description,
+			showEndDate,
 		};
+
+		axios.post(`${baseURL}/api/v1/userExperienceInfo`, experienceInfo).then((response) => {
+			console.log(response);
+		});
 
 		console.log(experienceInfo);
 	};
@@ -92,13 +99,13 @@ const UserExperience = () => {
 						<MenuItem sx={{ display: 'none' }} disabled value={''}>
 							Please Select
 						</MenuItem>
-						<MenuItem value={'fullTime'}>Full-Time</MenuItem>
-						<MenuItem value={'partTime'}>Part-Time</MenuItem>
-						<MenuItem value={'selfEmployed'}>Self-employed</MenuItem>
-						<MenuItem value={'freelance'}>Freelance</MenuItem>
-						<MenuItem value={'internship'}>Internship</MenuItem>
-						<MenuItem value={'seasonal'}>Seasonal</MenuItem>
-						<MenuItem value={'contact'}>Contact</MenuItem>
+						<MenuItem value={'Full-Time'}>Full-Time</MenuItem>
+						<MenuItem value={'Part-Time'}>Part-Time</MenuItem>
+						<MenuItem value={'Self-employed'}>Self-employed</MenuItem>
+						<MenuItem value={'Freelance'}>Freelance</MenuItem>
+						<MenuItem value={'Internship'}>Internship</MenuItem>
+						<MenuItem value={'Seasonal'}>Seasonal</MenuItem>
+						<MenuItem value={'Contact'}>Contact</MenuItem>
 					</Select>
 				</div>
 
@@ -152,7 +159,7 @@ const UserExperience = () => {
 						<MenuItem sx={{ display: 'none' }} disabled value={''}>
 							Please Select
 						</MenuItem>
-						<MenuItem value={'onSite'}>On-site</MenuItem>
+						<MenuItem value={'On-Site'}>On-site</MenuItem>
 						<MenuItem value={'remote'}>Remote</MenuItem>
 						<MenuItem value={'hybrid'}>Hybrid</MenuItem>
 					</Select>
