@@ -1,6 +1,8 @@
+import axios from 'axios';
 import React from 'react';
 import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
+import { baseURL } from '../../../../baseURL';
 
 const TestimonialInfo = () => {
 	const {
@@ -19,7 +21,10 @@ const TestimonialInfo = () => {
 			recommenderDesignation,
 			recommendation,
 		};
-		console.log(testimonial_info);
+
+		axios.post(`${baseURL}/api/v1/userTestimonialInfo`, testimonial_info).then((response) => {
+			console.log(response);
+		});
 	};
 
 	return (
