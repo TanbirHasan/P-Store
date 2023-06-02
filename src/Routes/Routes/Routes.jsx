@@ -18,6 +18,7 @@ import VideoLibrary from '../../pages/Dashboard/Admin/VideoLibrary/VideoLibrary'
 import AdminHome from './../../pages/Dashboard/Admin/AdminHome/AdminHome';
 import Organization from './../../pages/Dashboard/Admin/Organization/Organization';
 import Login from './../../pages/Login/Login';
+import Registration from '../../pages/Registration/Registration';
 
 export const router = createBrowserRouter([
 	// normal main route
@@ -29,7 +30,12 @@ export const router = createBrowserRouter([
 				path: '/login',
 				element: <Login />,
 			},
+			
 		],
+	},
+	{
+		path: '/register',
+		element: <Registration />,
 	},
 
 	// for ADMIN routes

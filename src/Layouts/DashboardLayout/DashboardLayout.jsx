@@ -22,7 +22,7 @@ import recommendation from '../../assets/icons/recommendation.svg';
 import userIconDark from '../../assets/icons/user-dark-version.svg';
 import userIcon from '../../assets/icons/users.svg';
 import videoLibraryDark from '../../assets/icons/videoLibrary-dark.svg';
-import videoLibrary from '../../assets/icons/videoLibrary.svg';
+import videoLibrary from '../../assets/icons/videolibrary.svg';
 import DashboardNavbar from '../../components/DashboardNavbar/DashboardNavbar';
 
 const DashboardLayout = () => {
