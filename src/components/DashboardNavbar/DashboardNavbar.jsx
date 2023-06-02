@@ -8,9 +8,14 @@ import MenuItem from '@mui/material/MenuItem';
 import React from 'react';
 import dashboardMenu from '../../assets/icons/dashboardMenu.svg';
 import SearchIcon from '@mui/icons-material/Search';
+import { useContext } from 'react';
+import AuthContext from '../../context/AuthProvider';
+import { useNavigate } from 'react-router-dom';
 
 const DashboardNavbar = () => {
 	const [anchorEl, setAnchorEl] = React.useState(null);
+	const { setAuth } = useContext(AuthContext);
+	const navigate = useNavigate()
 	const open = Boolean(anchorEl);
 	const handleClick = (event) => {
 		setAnchorEl(event.currentTarget);
@@ -18,6 +23,11 @@ const DashboardNavbar = () => {
 	const handleClose = () => {
 		setAnchorEl(null);
 	};
+
+	const handleLogout = () => {
+      setAuth({})
+	  navigate("/")
+	}
 
 	return (
 		<nav className="bg-white w-full h-[106px] block  border-b-4 border-[#BFBFBF]">
@@ -98,7 +108,7 @@ const DashboardNavbar = () => {
 
 							{/* <Divider /> */}
 
-							<MenuItem onClick={handleClose}>
+							<MenuItem onClick={handleLogout}>
 								<ListItemIcon>
 									<Logout sx={{ color: '#FF0000' }} fontSize="small" />
 								</ListItemIcon>
