@@ -1,8 +1,10 @@
 import axios from 'axios';
-import React from 'react';
+import React, { useContext } from 'react';
 import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
 import { baseURL } from '../../../../baseURL';
+import AuthContext from '../../../../context/AuthProvider';
+import { toast } from 'react-toastify';
 
 const TestimonialInfo = () => {
 	const {
@@ -12,11 +14,13 @@ const TestimonialInfo = () => {
 	} = useForm();
 
 	const navigate = useNavigate();
+	const { auth } = useContext(AuthContext);
 
 	const handleRecommenderInfo = (data) => {
 		const { recommendation, recommenderDesignation, recommenderName } = data;
 
 		const testimonial_info = {
+			userEmail: auth?.email,
 			recommenderName,
 			recommenderDesignation,
 			recommendation,
@@ -24,6 +28,9 @@ const TestimonialInfo = () => {
 
 		axios.post(`${baseURL}/api/v1/userTestimonialInfo`, testimonial_info).then((response) => {
 			console.log(response);
+			if (response.status === 200) {
+				toast.success('Successfully added Testimonial information');
+			}
 		});
 	};
 

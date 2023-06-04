@@ -9,10 +9,13 @@ import { Autoplay, Navigation } from 'swiper';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import { Swiper, SwiperSlide } from 'swiper/react';
+import AuthContext from '../../context/AuthProvider';
 
 const PortfolioTestimonials = () => {
 	const { backgroundColor, primaryColor, secondaryColor, fontColor, fileList } =
 		useContext(COLOR_CONTEXT);
+	
+		const { auth } = useContext(AuthContext);
 
 	const {
 		isLoading,
@@ -22,7 +25,7 @@ const PortfolioTestimonials = () => {
 		queryKey: ['userTestimonialInfo'],
 		queryFn: () =>
 			axios
-				.get(`${baseURL}/api/v1/userTestimonialInfo/sajid@gmail.com`)
+				.get(`${baseURL}/api/v1/userTestimonialInfo/${auth?.email}`)
 				.then((res) => res.data.data),
 	});
 
@@ -58,7 +61,7 @@ const PortfolioTestimonials = () => {
 					}}
 					modules={[Autoplay, Navigation]}
 					className="mySwiper1 w-full lg:h-[300px]">
-					{userTestimonialInfo.map((testimonial) => (
+					{userTestimonialInfo?.map((testimonial) => (
 						<SwiperSlide key={testimonial._id} className="">
 							<div className="overflow-hidden bg-white rounded shadow-2xl text-slate-500 shadow-slate-200 lg:w-3/4 mx-auto ">
 								<div className="relative p-6">

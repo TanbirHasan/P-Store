@@ -2,12 +2,15 @@ import { useQuery } from '@tanstack/react-query';
 import axios from 'axios';
 import React, { useContext } from 'react';
 import { baseURL } from '../../baseURL';
+import AuthContext from '../../context/AuthProvider';
 import { COLOR_CONTEXT } from '../../context/ColorProvider';
 import FadeLoaderSpinner from '../Spinners/FadeLoaderSpinner';
 
 const PortfolioEducation = () => {
 	const { backgroundColor, primaryColor, secondaryColor, fileList, fontColor } =
 		useContext(COLOR_CONTEXT);
+
+	const { auth } = useContext(AuthContext);
 
 	const {
 		isLoading,
@@ -16,24 +19,24 @@ const PortfolioEducation = () => {
 	} = useQuery({
 		queryKey: ['userEducationInfo'],
 		queryFn: () =>
-			axios.get(`${baseURL}/api/v1/usersEducationInfo/sajid@gmail.com`).then((res) => res.data.data),
+			axios.get(`${baseURL}/api/v1/usersEducationInfo/${auth?.email}`).then((res) => res.data.data),
 	});
 
 	if (isLoading)
 		return (
 			<div className="flex h-screen justify-center items-center w-full">
 				{' '}
-				<FadeLoaderSpinner size={150}  color={fontColor} />{' '}
+				<FadeLoaderSpinner size={150} color={fontColor} />{' '}
 			</div>
 		);
 	if (error) return <div>Error</div>;
 
 	return (
 		<section
-			style={{ backgroundColor: backgroundColor, color: fontColor}}
-			className=" mx-auto px-4 md:px-8 pb-20">
+			style={{ backgroundColor: backgroundColor, color: fontColor }}
+			className=" mx-auto px-4 md:px-8 pb-20 h-[calc(100vh_-_81px)]">
 			<ul className="p-10 space-y-10 max-w-screen-lg mx-auto pt-20">
-				{userEducationInfo.map((item, idx) => (
+				{userEducationInfo?.map((item, idx) => (
 					<li key={item._id} className="p-5 bg-white rounded-md shadow-sm">
 						<div>
 							<div className="justify-between sm:flex">
@@ -55,7 +58,6 @@ const PortfolioEducation = () => {
 												clipRule="evenodd"
 											/>
 										</svg>
-										
 										{item.startDate} - {item.endDate}
 									</span>
 								</div>

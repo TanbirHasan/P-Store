@@ -27,7 +27,7 @@ root.render(
 					pauseOnFocusLoss
 					draggable
 					pauseOnHover
-					theme="colored"
+					theme="dark"
 				/>
 			</ProSidebarProvider>
 			{/* </Provider> */}

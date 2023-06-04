@@ -2,12 +2,15 @@ import { useQuery } from '@tanstack/react-query';
 import axios from 'axios';
 import React, { useContext } from 'react';
 import { baseURL } from '../../baseURL';
+import AuthContext from '../../context/AuthProvider';
 import { COLOR_CONTEXT } from '../../context/ColorProvider';
 import FadeLoaderSpinner from '../Spinners/FadeLoaderSpinner';
 
 export default function PortfolioSkills() {
 	const { backgroundColor, primaryColor, secondaryColor, fontColor, fileList } =
 		useContext(COLOR_CONTEXT);
+
+	const { auth } = useContext(AuthContext);
 
 	const {
 		isLoading,
@@ -16,7 +19,7 @@ export default function PortfolioSkills() {
 	} = useQuery({
 		queryKey: ['userSkills'],
 		queryFn: () =>
-			axios.get(`${baseURL}/api/v1/userSkills/sajid@gmail.com`).then((res) => res.data.data),
+			axios.get(`${baseURL}/api/v1/userSkills/${auth?.email}`).then((res) => res.data.data),
 	});
 
 	if (isLoading)
@@ -28,7 +31,7 @@ export default function PortfolioSkills() {
 		);
 	if (error) return <div>Error</div>;
 
-	const skills = userSkills[0].skills;
+	const skills = userSkills[0]?.skills;
 
 	return (
 		<div className="w-5/6 mx-auto">
@@ -47,7 +50,7 @@ export default function PortfolioSkills() {
 							</p>
 						</div>
 						<div class="flex flex-wrap -m-4">
-							{skills.map((skill, idx) => (
+							{skills?.map((skill, idx) => (
 								<div key={idx} class="xl:w-1/3 md:w-1/2  p-4">
 									<div class="border border-gray-200 p-6 rounded-lg">
 										<div class="w-10 h-10 inline-flex items-center justify-center rounded-full bg-indigo-100 text-indigo-500 mb-4">

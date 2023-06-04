@@ -1,8 +1,10 @@
 import axios from 'axios';
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 import { baseURL } from '../../../../baseURL';
+import AuthContext from '../../../../context/AuthProvider';
 
 const UserEducationInformation = () => {
 	const {
@@ -15,6 +17,8 @@ const UserEducationInformation = () => {
 
 	const navigate = useNavigate();
 
+	const { auth } = useContext(AuthContext);
+
 	const [startDate, setStartDate] = useState(null);
 	const [endDate, setEndDate] = useState(null);
 
@@ -22,6 +26,7 @@ const UserEducationInformation = () => {
 		const { instituteName, degree, fieldOfStudy, grade } = data;
 
 		const educationInformation = {
+			userEmail: auth?.email,
 			instituteName,
 			degree,
 			fieldOfStudy,
@@ -32,10 +37,13 @@ const UserEducationInformation = () => {
 
 		axios.post(`${baseURL}/api/v1/usersEducationInfo`, educationInformation).then((response) => {
 			console.log(response);
+			if (response.status === 200) {
+				toast.success('Successfully added Education information');
+			}
 		});
 
-		reset();
 		console.log(educationInformation);
+		reset();
 	};
 
 	return (

@@ -4,10 +4,12 @@ import ToggleButton from '@mui/material/ToggleButton';
 import ToggleButtonGroup from '@mui/material/ToggleButtonGroup';
 import { Upload } from 'antd';
 import axios from 'axios';
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 import { baseURL } from '../../../../baseURL';
+import AuthContext from '../../../../context/AuthProvider';
 
 const theme = createTheme({
 	palette: {
@@ -22,11 +24,11 @@ const UserBasicInformation = () => {
 		register,
 		handleSubmit,
 		formState: { errors },
-		reset,
-		resetField,
 	} = useForm();
 
 	const navigate = useNavigate();
+
+	const { auth } = useContext(AuthContext);
 
 	const [fileList, setFileList] = useState([]);
 
@@ -65,7 +67,7 @@ const UserBasicInformation = () => {
 	};
 
 	const handleBasicUserInformation = (data) => {
-		const { name, email, address, phone, about, linkedin, facebook, skype, youtube } = data;
+		const { name, email, address, about, linkedin, facebook, skype, youtube } = data;
 
 		const userInformation = {
 			name,
@@ -86,6 +88,9 @@ const UserBasicInformation = () => {
 
 		axios.post(`${baseURL}/api/v1/usersBasicInfo`, userInformation).then((response) => {
 			console.log(response);
+			if (response.status === 200) {
+				toast.success('Successfully added Basic information');
+			}
 		});
 
 		console.log(userInformation);
@@ -158,6 +163,7 @@ const UserBasicInformation = () => {
 							<input
 								type="email"
 								placeholder="sajid@gmail.com"
+								defaultValue={auth?.email}
 								{...register('email', { required: 'Email is required' })}
 								className={`w-full  border border-[#FFD333] focus:outline-0 focus:ring-0 focus:ring-transparent focus:border-[1.5px] focus:border-[#FFD333]  rounded-[3px] h-[60px] mt-4 ${
 									errors.email && 'focus:border-red-600'

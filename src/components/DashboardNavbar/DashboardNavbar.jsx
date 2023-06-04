@@ -1,20 +1,17 @@
-import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import Logout from '@mui/icons-material/Logout';
-import { Avatar, IconButton } from '@mui/material';
-import Divider from '@mui/material/Divider';
+import SearchIcon from '@mui/icons-material/Search';
+import { Avatar, Tooltip } from '@mui/material';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
-import React from 'react';
-import dashboardMenu from '../../assets/icons/dashboardMenu.svg';
-import SearchIcon from '@mui/icons-material/Search';
-import { useContext } from 'react';
-import AuthContext from '../../context/AuthProvider';
+import React, { useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
+import dashboardMenu from '../../assets/icons/dashboardMenu.svg';
+import AuthContext from '../../context/AuthProvider';
 
 const DashboardNavbar = () => {
 	const [anchorEl, setAnchorEl] = React.useState(null);
-	const { setAuth } = useContext(AuthContext);
+	const { auth,setAuth } = useContext(AuthContext);
 	const navigate = useNavigate()
 	const open = Boolean(anchorEl);
 	const handleClick = (event) => {
@@ -55,6 +52,9 @@ const DashboardNavbar = () => {
 				</div>
 				<div className="flex items-center">
 					<div>
+						<Tooltip arrow title={auth?.email} >
+
+
 						<Avatar
 							aria-controls={open ? 'account-menu' : undefined}
 							aria-haspopup="true"
@@ -66,8 +66,13 @@ const DashboardNavbar = () => {
 								height: 56,
 								cursor: 'pointer',
 							}}>
-							<AccountCircleIcon />
+							<span className='uppercase text-[20px] font-bold'>
+
+							{auth?.email?.slice(0,1)}
+							</span>
+							{/* <AccountCircleIcon /> */}
 						</Avatar>
+						</Tooltip>
 						<Menu
 							anchorEl={anchorEl}
 							id="account-menu"
@@ -117,9 +122,9 @@ const DashboardNavbar = () => {
 						</Menu>
 					</div>
 
-					<div>
-						<h4 className="mx-2  font-medium text-gray-800 ">Sajid</h4>
-					</div>
+					{/* <div>
+						<h4 className="mx-2  font-medium text-gray-800 ">{ auth?.email ? auth?.email : null }</h4>
+					</div> */}
 				</div>
 			</div>
 		</nav>
