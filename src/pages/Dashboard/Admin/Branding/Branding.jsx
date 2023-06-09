@@ -12,6 +12,7 @@ import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import PortfolioHome from '../../../../components/PortfolioTemplate/PortfolioTemplate1/PortfolioHome';
+import { PortfolioHome as PortfolioTemplate2 } from '../../../../components/PortfolioTemplate/PortfolioTemplate2/PortfolioHome';
 import { COLOR_CONTEXT } from '../../../../context/ColorProvider';
 
 const YellowSwitch = styled(Switch)(({ theme }) => ({
@@ -441,6 +442,7 @@ const Branding = () => {
 				<div className="w-full p-6 border border-[#ffbc0f66] border-t-0  mb-5">
 					<div className="w-full lg:w-[1000px] mx-auto mt-20 ">
 						{template === 'Portfolio Template 1' ? <PortfolioHome /> : null}
+						{template === 'Portfolio Template 2' ? <PortfolioTemplate2 /> : null}
 					</div>
 				</div>
 

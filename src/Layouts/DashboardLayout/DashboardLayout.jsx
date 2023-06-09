@@ -1,3 +1,4 @@
+import { Tooltip } from '@mui/material';
 import React, { useContext, useEffect, useState } from 'react';
 import { AiFillHome } from 'react-icons/ai';
 import { FaSuitcase } from 'react-icons/fa';
@@ -24,7 +25,6 @@ import videoLibraryDark from '../../assets/icons/videoLibrary-dark.svg';
 import videoLibrary from '../../assets/icons/videoLibrary.svg';
 import DashboardNavbar from '../../components/DashboardNavbar/DashboardNavbar';
 import AuthContext from '../../context/AuthProvider';
-import { Tooltip } from '@mui/material';
 
 const DashboardLayout = () => {
 	const { toggleSidebar, collapseSidebar, broken, collapsed } = useProSidebar();
@@ -72,6 +72,14 @@ const DashboardLayout = () => {
 										<Tooltip arrow  title="Portfolio Template 1">
 											<div className="uppercase text-[15px] text-center font-extrabold italic">
 												Portfolio Template 1
+											</div>
+										</Tooltip>
+									</Link>
+
+									<Link to="/portfolio-template-2">
+										<Tooltip arrow  title="Portfolio Template 1">
+											<div className="uppercase text-[15px] text-center font-extrabold italic my-3">
+												Portfolio Template 2
 											</div>
 										</Tooltip>
 									</Link>
