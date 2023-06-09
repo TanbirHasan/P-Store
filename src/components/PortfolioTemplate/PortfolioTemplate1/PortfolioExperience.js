@@ -1,9 +1,10 @@
 import { useQuery } from '@tanstack/react-query';
 import axios from 'axios';
 import React, { useContext } from 'react';
-import { baseURL } from '../../baseURL';
-import AuthContext from '../../context/AuthProvider';
-import FadeLoaderSpinner from '../Spinners/FadeLoaderSpinner';
+import { baseURL } from '../../../baseURL';
+import AuthContext from '../../../context/AuthProvider';
+import FadeLoaderSpinner from '../../Spinners/FadeLoaderSpinner';
+
 
 const PortfolioExperience = () => {
 	const { auth } = useContext(AuthContext);

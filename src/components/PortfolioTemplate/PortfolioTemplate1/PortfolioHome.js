@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { COLOR_CONTEXT } from './../../context/ColorProvider';
+import { COLOR_CONTEXT } from '../../../context/ColorProvider';
 import PortfolioAbout from './PortfolioAbout';
 import PortfolioContact from './PortfolioContact';
 import PortfolioEducation from './PortfolioEducation';

@@ -1,10 +1,9 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { AiFillHome } from 'react-icons/ai';
-import { GiSkills } from 'react-icons/gi';
-import { HiInformationCircle } from 'react-icons/hi';
 import { FaSuitcase } from 'react-icons/fa';
+import { GiSkills, GiTalk } from 'react-icons/gi';
+import { HiInformationCircle } from 'react-icons/hi';
 import { MdSchool } from 'react-icons/md';
-import { GiTalk } from 'react-icons/gi';
 import { Menu, Sidebar, useProSidebar } from 'react-pro-sidebar';
 import { Link, Outlet, ScrollRestoration, useLocation, useNavigate } from 'react-router-dom';
 import analyticsDarkVesion from '../../assets/icons/analytics-dark-version.svg';
@@ -25,6 +24,7 @@ import videoLibraryDark from '../../assets/icons/videoLibrary-dark.svg';
 import videoLibrary from '../../assets/icons/videoLibrary.svg';
 import DashboardNavbar from '../../components/DashboardNavbar/DashboardNavbar';
 import AuthContext from '../../context/AuthProvider';
+import { Tooltip } from '@mui/material';
 
 const DashboardLayout = () => {
 	const { toggleSidebar, collapseSidebar, broken, collapsed } = useProSidebar();
@@ -68,10 +68,12 @@ const DashboardLayout = () => {
 										</h1>
 									</Link>
 
-									<Link to="/portfoliohome">
-										<div className="uppercase text-[20px] text-center font-extrabold italic">
-											PortfolioHome
-										</div>
+									<Link to="/portfolio-template-1">
+										<Tooltip arrow  title="Portfolio Template 1">
+											<div className="uppercase text-[15px] text-center font-extrabold italic">
+												Portfolio Template 1
+											</div>
+										</Tooltip>
 									</Link>
 								</div>
 

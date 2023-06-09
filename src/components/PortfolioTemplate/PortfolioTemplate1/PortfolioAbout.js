@@ -1,10 +1,10 @@
 import { useQuery } from '@tanstack/react-query';
 import axios from 'axios';
 import React, { useContext, useState } from 'react';
-import { baseURL } from '../../baseURL';
-import AuthContext from '../../context/AuthProvider';
-import FadeLoaderSpinner from '../Spinners/FadeLoaderSpinner';
-import { COLOR_CONTEXT } from './../../context/ColorProvider';
+import { baseURL } from '../../../baseURL';
+import AuthContext from '../../../context/AuthProvider';
+import FadeLoaderSpinner from '../../Spinners/FadeLoaderSpinner';
+import { COLOR_CONTEXT } from '../../../context/ColorProvider';
 
 const stats = [
 	{

@@ -1,15 +1,16 @@
 import { useQuery } from '@tanstack/react-query';
 import axios from 'axios';
 import React, { useContext } from 'react';
-import { baseURL } from '../../baseURL';
-import { COLOR_CONTEXT } from '../../context/ColorProvider';
-import FadeLoaderSpinner from '../Spinners/FadeLoaderSpinner';
+
 
 import { Autoplay, Navigation } from 'swiper';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import AuthContext from '../../context/AuthProvider';
+import { baseURL } from '../../../baseURL';
+import AuthContext from '../../../context/AuthProvider';
+import { COLOR_CONTEXT } from '../../../context/ColorProvider';
+import FadeLoaderSpinner from '../../Spinners/FadeLoaderSpinner';
 
 const PortfolioTestimonials = () => {
 	const { backgroundColor, primaryColor, secondaryColor, fontColor, fileList } =
@@ -40,11 +41,11 @@ const PortfolioTestimonials = () => {
 
 	return (
 		<div className="lg:w-[90%] mx-auto pt-10">
-			<div class="flex flex-wrap w-full mb-20 flex-col items-center text-center ">
-				<h1 style={{ color: fontColor }} class="sm:text-3xl text-2xl font-medium title-font mb-2 ">
+			<div className="flex flex-wrap w-full mb-20 flex-col items-center text-center ">
+				<h1 style={{ color: fontColor }} className="sm:text-3xl text-2xl font-medium title-font mb-2 ">
 					Testimonials
 				</h1>
-				<p style={{ color: secondaryColor }} class="lg:w-1/2 w-full leading-relaxed ">
+				<p style={{ color: secondaryColor }} className="lg:w-1/2 w-full leading-relaxed ">
 					Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
 					ut labore et dolore magna aliqua.
 				</p>

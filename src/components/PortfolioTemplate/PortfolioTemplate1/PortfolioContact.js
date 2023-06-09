@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { COLOR_CONTEXT } from '../../context/ColorProvider';
+import { COLOR_CONTEXT } from '../../../context/ColorProvider';
 
 const PortfolioContact = () => {
 	const { backgroundColor, primaryColor, secondaryColor, fileList, fontColor } =
