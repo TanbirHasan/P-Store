@@ -17,6 +17,7 @@ import VideoLibrary from '../../pages/Dashboard/Admin/VideoLibrary/VideoLibrary'
 import Registration from '../../pages/Registration/Registration';
 import PortfolioHome from './../../components/PortfolioTemplate/PortfolioTemplate1/PortfolioHome';
 import { PortfolioHome as PortfolioTemplate2 } from './../../components/PortfolioTemplate/PortfolioTemplate2/PortfolioHome';
+import { PortfolioHome as PortfolioTemplate3 } from './../../components/PortfolioTemplate/PortfolioTemplate3/PortfolioHome';
 import AdminHome from './../../pages/Dashboard/Admin/AdminHome/AdminHome';
 import Organization from './../../pages/Dashboard/Admin/Organization/Organization';
 import Login from './../../pages/Login/Login';
@@ -113,5 +114,9 @@ export const router = createBrowserRouter([
 	{
 		path: '/portfolio-template-2',
 		element: <PortfolioTemplate2 />,
+	},
+	{
+		path: '/portfolio-template-3',
+		element: <PortfolioTemplate3 />,
 	},
 ]);

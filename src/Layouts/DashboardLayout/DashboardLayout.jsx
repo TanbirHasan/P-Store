@@ -77,9 +77,16 @@ const DashboardLayout = () => {
 									</Link>
 
 									<Link to="/portfolio-template-2">
-										<Tooltip arrow  title="Portfolio Template 1">
+										<Tooltip arrow  title="Portfolio Template 2">
 											<div className="uppercase text-[15px] text-center font-extrabold italic my-3">
 												Portfolio Template 2
+											</div>
+										</Tooltip>
+									</Link>
+									<Link to="/portfolio-template-3">
+										<Tooltip arrow  title="Portfolio Template 3">
+											<div className="uppercase text-[15px] text-center font-extrabold italic my-3">
+												Portfolio Template 3
 											</div>
 										</Tooltip>
 									</Link>

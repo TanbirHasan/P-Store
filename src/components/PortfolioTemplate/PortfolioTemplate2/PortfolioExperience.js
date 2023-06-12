@@ -28,7 +28,7 @@ const PortfolioExperience = () => {
 	if (error) return <div>Error</div>;
 
 	return (
-		<div className='p-10'>
+		<div className="p-10">
 			<ul
 				aria-label="Changelog feed"
 				role="feed"
@@ -40,6 +40,9 @@ const PortfolioExperience = () => {
 						className="relative pl-6 before:absolute before:left-0 before:top-2 before:z-10 before:h-2 before:w-2 before:-translate-x-1/2 before:rounded-full before:bg-emerald-500 before:ring-2 before:ring-white">
 						<div className="flex flex-col flex-1">
 							<h4 className="text-lg font-medium text-emerald-500 m-0">{exp.position} </h4>
+							<p className="text-base font-medium leading-5 text-slate-500">
+								{exp.companyName} - {exp.employmentType}
+							</p>
 							<p className="">
 								<span className="text-sm font-normal text-slate-500">
 									{' '}

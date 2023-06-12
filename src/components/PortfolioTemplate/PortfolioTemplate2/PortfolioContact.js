@@ -2,7 +2,7 @@ import React from 'react';
 
 const PortfolioContact = () => {
 	return (
-		<div className="h-[calc(100vh_-_88px)]">
+		<div className="">
 			<section className="">
 				<div className="container px-6 py-12 mx-auto">
 					<div className="lg:flex lg:items-center lg:-mx-6 justify-center">
