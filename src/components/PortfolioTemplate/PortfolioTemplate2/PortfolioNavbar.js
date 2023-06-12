@@ -133,6 +133,20 @@ const PortfolioNavbar = ({
 									setShowAbout(false);
 									setShowProjects(false);
 									setShowSkills(false);
+									setShowContact(false);
+									setShowEducation(false);
+									setShowExperience(true);
+								}}
+								className={`flex items-center gap-2 py-4 transition-colors duration-300 hover:text-emerald-500 focus:bg-emerald-50 focus:outline-none focus-visible:outline-none lg:px-5 cursor-pointer ${
+									showExperience && 'text-emerald-500'
+								}`}>
+								<span>Experience</span>
+							</li>
+							<li
+								onClick={() => {
+									setShowAbout(false);
+									setShowProjects(false);
+									setShowSkills(false);
 									setShowContact(true);
 									setShowEducation(false);
 									setShowExperience(false);

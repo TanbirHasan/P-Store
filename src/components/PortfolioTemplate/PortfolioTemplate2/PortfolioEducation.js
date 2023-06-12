@@ -29,16 +29,12 @@ const PortfolioEducation = () => {
 				<FadeLoaderSpinner size={150} color={fontColor} />{' '}
 			</div>
 		);
-    if (error) return <div>{ error.message }</div>;
+	if (error) return <div>{error.message}</div>;
 
 	return (
-		<div className="max-w-7xl mx-auto p-10mx-auto px-4 md:px-8 pb-20 h-[calc(100vh_-_88px)] space-y-10">
-			<h1>Education</h1>
-
-			{userEducationInfo.map((item) => (
-				<div
-					key={item._id}
-					className="w-full px-8 py-4 bg-white rounded-lg shadow-md ">
+		<div className="max-w-7xl  p-10 mx-auto px-4 md:px-8 pb-20 h-[calc(100vh_-_88px)] space-y-10">
+			{userEducationInfo?.map((item) => (
+				<div key={item._id} className="w-full px-8 py-4 bg-white rounded-lg shadow-md ">
 					<div className="flex items-center justify-between">
 						<span className="text-sm font-light text-gray-600 dark:text-gray-400">
 							{item.startDate} - {item.endDate}

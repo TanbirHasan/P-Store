@@ -2,6 +2,7 @@ import React from 'react';
 import PortfolioAbout from './PortfolioAbout';
 import PortfolioContact from './PortfolioContact';
 import PortfolioEducation from './PortfolioEducation';
+import PortfolioExperience from './PortfolioExperience';
 import PortfolioNavbar from './PortfolioNavbar';
 import PortfolioSkills from './PortfolioSkills';
 import PortfolioTestimonial from './PortfolioTestimonial';
@@ -38,6 +39,8 @@ const PortfolioHome = () => {
 				<PortfolioContact />
 			) : showEducation ? (
 				<PortfolioEducation />
+			) : showExperience ? (
+				<PortfolioExperience />
 			) : (
 				<div>
 					<PortfolioAbout />
@@ -50,3 +53,4 @@ const PortfolioHome = () => {
 };
 
 export { PortfolioHome };
+
