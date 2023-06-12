@@ -55,8 +55,8 @@ const PortfolioAbout = () => {
 					</div>
 					<div className="max-w-xl px-4 space-y-3 mt-6 sm:px-0 md:mt-0 lg:max-w-2xl">
 						<h3 className="text-indigo-600 text-3xl font-semibold sm:text-4xl">{userInfo?.name}</h3>
-						<p className="text-gray-800 text-3xl font-semibold sm:text-4xl">
-							Build your SaaS solution with help from my expertise
+						<p className="text-gray-800 text-xl font-semibold">
+							A passionate {userInfo?.title}
 						</p>
 						<p className="mt-3 text-gray-600">{userInfo?.about}</p>
 						<button className="inline-flex gap-x-1 items-center text-indigo-600 hover:text-indigo-500 duration-150 font-medium">

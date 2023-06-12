@@ -77,16 +77,70 @@ const PortfolioNavbar = ({
 							<li
 								onClick={() => {
 									setShowAbout(false);
+									setShowProjects(false);
+									setShowSkills(false);
+									setShowContact(false);
+									setShowEducation(false);
+									setShowExperience(false);
 								}}
-								className="flex items-center gap-2 py-4 transition-colors duration-300 hover:text-emerald-500 focus:bg-emerald-50 focus:outline-none focus-visible:outline-none lg:px-8 cursor-pointer">
+								className="flex items-center gap-2 py-4 transition-colors duration-300 hover:text-emerald-500 focus:bg-emerald-50 focus:outline-none focus-visible:outline-none lg:px-5 cursor-pointer">
 								<span>Home</span>
 							</li>
 							<li
 								onClick={() => {
 									setShowAbout(true);
+									setShowProjects(false);
+									setShowSkills(false);
+									setShowContact(false);
+									setShowEducation(false);
+									setShowExperience(false);
 								}}
-								className="flex items-center gap-2 py-4 transition-colors duration-300 hover:text-emerald-500 focus:bg-emerald-50 focus:outline-none focus-visible:outline-none lg:px-8 cursor-pointer">
+								className={`flex items-center gap-2 py-4 transition-colors duration-300 hover:text-emerald-500 focus:bg-emerald-50 focus:outline-none focus-visible:outline-none lg:px-5 cursor-pointer ${
+									showAbout && 'text-emerald-500'
+								}`}>
 								<span>About</span>
+							</li>
+							<li
+								onClick={() => {
+									setShowAbout(false);
+									setShowProjects(false);
+									setShowSkills(true);
+									setShowContact(false);
+									setShowEducation(false);
+									setShowExperience(false);
+								}}
+								className={`flex items-center gap-2 py-4 transition-colors duration-300 hover:text-emerald-500 focus:bg-emerald-50 focus:outline-none focus-visible:outline-none lg:px-5 cursor-pointer ${
+									showSkills && 'text-emerald-500'
+								}`}>
+								<span>Skills</span>
+							</li>
+							<li
+								onClick={() => {
+									setShowAbout(false);
+									setShowProjects(false);
+									setShowSkills(false);
+									setShowContact(false);
+									setShowEducation(true);
+									setShowExperience(false);
+								}}
+								className={`flex items-center gap-2 py-4 transition-colors duration-300 hover:text-emerald-500 focus:bg-emerald-50 focus:outline-none focus-visible:outline-none lg:px-5 cursor-pointer ${
+									showEducation && 'text-emerald-500'
+								}`}>
+								<span>Education</span>
+							</li>
+							<li
+								onClick={() => {
+									setShowAbout(false);
+									setShowProjects(false);
+									setShowSkills(false);
+									setShowContact(true);
+									setShowEducation(false);
+									setShowExperience(false);
+								}}
+								className={`flex items-center gap-2 py-4 transition-colors duration-300 hover:text-emerald-500 focus:bg-emerald-50 focus:outline-none focus-visible:outline-none lg:px-5 cursor-pointer ${
+									showContact && 'text-emerald-500'
+								}`}>
+								<span>Contact</span>
 							</li>
 						</ul>
 					</nav>

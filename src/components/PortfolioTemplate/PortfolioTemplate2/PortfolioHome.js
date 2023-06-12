@@ -1,6 +1,10 @@
 import React from 'react';
 import PortfolioAbout from './PortfolioAbout';
+import PortfolioContact from './PortfolioContact';
+import PortfolioEducation from './PortfolioEducation';
 import PortfolioNavbar from './PortfolioNavbar';
+import PortfolioSkills from './PortfolioSkills';
+import PortfolioTestimonial from './PortfolioTestimonial';
 
 const PortfolioHome = () => {
 	const [showAbout, setShowAbout] = React.useState(false);
@@ -11,7 +15,7 @@ const PortfolioHome = () => {
 	const [showExperience, setShowExperience] = React.useState(false);
 
 	return (
-		<div>
+		<div className="">
 			<PortfolioNavbar
 				setShowAbout={setShowAbout}
 				setShowProjects={setShowProjects}
@@ -28,10 +32,17 @@ const PortfolioHome = () => {
 			/>
 			{showAbout ? (
 				<PortfolioAbout />
+			) : showSkills ? (
+				<PortfolioSkills />
+			) : showContact ? (
+				<PortfolioContact />
+			) : showEducation ? (
+				<PortfolioEducation />
 			) : (
 				<div>
-						<PortfolioAbout />
-						
+					<PortfolioAbout />
+					<PortfolioSkills />
+					<PortfolioTestimonial />
 				</div>
 			)}
 		</div>
@@ -39,4 +50,3 @@ const PortfolioHome = () => {
 };
 
 export { PortfolioHome };
-

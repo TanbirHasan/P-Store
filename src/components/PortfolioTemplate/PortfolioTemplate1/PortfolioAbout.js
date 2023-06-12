@@ -3,8 +3,8 @@ import axios from 'axios';
 import React, { useContext, useState } from 'react';
 import { baseURL } from '../../../baseURL';
 import AuthContext from '../../../context/AuthProvider';
-import FadeLoaderSpinner from '../../Spinners/FadeLoaderSpinner';
 import { COLOR_CONTEXT } from '../../../context/ColorProvider';
+import FadeLoaderSpinner from '../../Spinners/FadeLoaderSpinner';
 
 const stats = [
 	{
@@ -63,7 +63,7 @@ export default function PortfolioAbout() {
 					{/* Here name , designation will be dynamic */}
 					<h4>Hello</h4>
 					<h2 className="text-3xl">I'm {userInfo?.name}</h2>
-					<h3 className="text-xl">A passionate {}</h3>
+					<h3 className="text-xl">A passionate {userInfo?.title}</h3>
 					<p>{userInfo?.about}</p>
 				</div>
 				<div className="lg:w-2/4 mx-auto justify-center">
