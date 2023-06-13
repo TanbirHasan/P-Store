@@ -64,11 +64,12 @@ const PortfolioNavbar = ({
 						<ul
 							role="menubar"
 							aria-label="Select page"
-							className={`absolute top-0 left-0 z-[-1] h-[28.5rem] w-full justify-center overflow-hidden  overflow-y-auto overscroll-contain bg-white/90 px-8 pb-12 pt-24 font-medium transition-[opacity,visibility] duration-300 lg:visible lg:relative lg:top-0  lg:z-0 lg:flex lg:h-full lg:w-auto lg:items-stretch lg:overflow-visible lg:bg-white/0 lg:px-0 lg:py-0  lg:pt-0 lg:opacity-100 items-center gap-10 ${
+							className={`absolute top-0 left-0 z-[-1] h-[28.5rem] w-full justify-center overflow-hidden  overflow-y-auto overscroll-contain bg-white/90 px-8 pb-12 pt-24 font-medium transition-[opacity,visibility] duration-300 lg:visible lg:relative lg:top-0  lg:z-0 lg:flex lg:h-full lg:w-auto lg:items-stretch lg:overflow-visible lg:bg-white/0 lg:px-0 lg:py-0  lg:pt-0 lg:opacity-100 items-center gap-1 md:gap-10 flex flex-col lg:flex-row ${
 								isToggleOpen ? 'visible opacity-100 backdrop-blur-sm' : 'invisible opacity-0'
 							}`}>
 							<li
 								onClick={() => {
+									setIsToggleOpen(false)
 									setShowAbout(false);
 									setShowProjects(false);
 									setShowSkills(false);
@@ -77,11 +78,12 @@ const PortfolioNavbar = ({
 									setShowExperience(false);
 								}}
 								role="none"
-								className={`flex h-full items-center $`}>
+								className={`flex md:h-full items-center $`}>
 								<span className={`font-semibold cursor-pointer hover:text-blue-700 `}>Home</span>
 							</li>
 							<li
 								onClick={() => {
+									setIsToggleOpen(false)
 									setShowAbout(true);
 									setShowProjects(false);
 									setShowSkills(false);
@@ -90,7 +92,7 @@ const PortfolioNavbar = ({
 									setShowExperience(false);
 								}}
 								role="none"
-								className={`flex h-full items-center $`}>
+								className={`flex md:h-full items-center $`}>
 								<span
 									className={`font-semibold cursor-pointer hover:text-blue-700 ${
 										showAbout && 'text-blue-700'
@@ -100,6 +102,7 @@ const PortfolioNavbar = ({
 							</li>
 							<li
 								onClick={() => {
+									setIsToggleOpen(false)
 									setShowAbout(false);
 									setShowProjects(false);
 									setShowSkills(true);
@@ -108,12 +111,69 @@ const PortfolioNavbar = ({
 									setShowExperience(false);
 								}}
 								role="none"
-								className={`flex h-full items-center  $`}>
+								className={`flex md:h-full items-center  $`}>
 								<span
 									className={`font-semibold cursor-pointer hover:text-blue-700 ${
 										showSkills && 'text-blue-700'
 									}`}>
 									Skills
+								</span>
+							</li>
+							<li
+								onClick={() => {
+									setIsToggleOpen(false)
+									setShowAbout(false);
+									setShowProjects(false);
+									setShowSkills(false);
+									setShowContact(false);
+									setShowEducation(true);
+									setShowExperience(false);
+								}}
+								role="none"
+								className={`flex md:h-full items-center  $`}>
+								<span
+									className={`font-semibold cursor-pointer hover:text-blue-700 ${
+										showEducation && 'text-blue-700'
+									}`}>
+									Education
+								</span>
+							</li>
+							<li
+								onClick={() => {
+									setIsToggleOpen(false)
+									setShowAbout(false);
+									setShowProjects(false);
+									setShowSkills(false);
+									setShowContact(false);
+									setShowEducation(false);
+									setShowExperience(true);
+								}}
+								role="none"
+								className={`flex md:h-full items-center  $`}>
+								<span
+									className={`font-semibold cursor-pointer hover:text-blue-700 ${
+										showExperience && 'text-blue-700'
+									}`}>
+									Experience
+								</span>
+							</li>
+							<li
+								onClick={() => {
+									setIsToggleOpen(false)
+									setShowAbout(false);
+									setShowProjects(false);
+									setShowSkills(false);
+									setShowEducation(false);
+									setShowExperience(false);
+									setShowContact(true);
+								}}
+								role="none"
+								className={`flex md:h-full items-center  $`}>
+								<span
+									className={`font-semibold cursor-pointer hover:text-blue-700 ${
+										showContact && 'text-blue-700'
+									}`}>
+									Contact
 								</span>
 							</li>
 						</ul>
