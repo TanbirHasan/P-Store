@@ -1,7 +1,6 @@
 import { createBrowserRouter } from 'react-router-dom';
 import DashboardLayout from '../../Layouts/DashboardLayout/DashboardLayout';
 import MainLayout from '../../Layouts/MainLayout/MainLayout';
-import PortfolioHome from '../../components/PortfolioTemplate/PortfolioHome';
 import AllPortfolios from '../../pages/Dashboard/Admin/AllPortfolios/AllPortfolios';
 import Analytics from '../../pages/Dashboard/Admin/Analytics/Analytics';
 import Branding from '../../pages/Dashboard/Admin/Branding/Branding';
@@ -15,10 +14,13 @@ import UserExperience from '../../pages/Dashboard/Admin/UserExperience/UserExper
 import UserSkill from '../../pages/Dashboard/Admin/UserSkill/UserSkill';
 import Users from '../../pages/Dashboard/Admin/Users/Users';
 import VideoLibrary from '../../pages/Dashboard/Admin/VideoLibrary/VideoLibrary';
+import Registration from '../../pages/Registration/Registration';
+import PortfolioHome from './../../components/PortfolioTemplate/PortfolioTemplate1/PortfolioHome';
+import { PortfolioHome as PortfolioTemplate2 } from './../../components/PortfolioTemplate/PortfolioTemplate2/PortfolioHome';
+import { PortfolioHome as PortfolioTemplate3 } from './../../components/PortfolioTemplate/PortfolioTemplate3/PortfolioHome';
 import AdminHome from './../../pages/Dashboard/Admin/AdminHome/AdminHome';
 import Organization from './../../pages/Dashboard/Admin/Organization/Organization';
 import Login from './../../pages/Login/Login';
-import Registration from '../../pages/Registration/Registration';
 
 export const router = createBrowserRouter([
 	// normal main route
@@ -30,7 +32,6 @@ export const router = createBrowserRouter([
 				path: '/login',
 				element: <Login />,
 			},
-			
 		],
 	},
 	{
@@ -107,7 +108,15 @@ export const router = createBrowserRouter([
 		],
 	},
 	{
-		path: '/portfoliohome',
+		path: '/portfolio-template-1',
 		element: <PortfolioHome />,
+	},
+	{
+		path: '/portfolio-template-2',
+		element: <PortfolioTemplate2 />,
+	},
+	{
+		path: '/portfolio-template-3',
+		element: <PortfolioTemplate3 />,
 	},
 ]);

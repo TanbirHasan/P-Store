@@ -4,10 +4,12 @@ import FormControlLabel from '@mui/material/FormControlLabel';
 import MenuItem from '@mui/material/MenuItem';
 import Select from '@mui/material/Select';
 import axios from 'axios';
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
 import { baseURL } from '../../../../baseURL';
+import AuthContext from '../../../../context/AuthProvider';
+import { toast } from 'react-toastify';
 
 const theme = createTheme({
 	palette: {
@@ -22,11 +24,10 @@ const UserExperience = () => {
 		register,
 		handleSubmit,
 		formState: { errors },
-		reset,
-		resetField,
 	} = useForm();
 
 	const navigate = useNavigate();
+	const { auth } = useContext(AuthContext);
 
 	const [startDate, setStartDate] = useState(null);
 	const [endDate, setEndDate] = useState(null);
@@ -38,6 +39,7 @@ const UserExperience = () => {
 		const { position, companyName, companyLocation, description } = data;
 
 		const experienceInfo = {
+			userEmail: auth?.email,
 			position,
 			employmentType,
 			companyName,
@@ -51,6 +53,9 @@ const UserExperience = () => {
 
 		axios.post(`${baseURL}/api/v1/userExperienceInfo`, experienceInfo).then((response) => {
 			console.log(response);
+			if (response.status === 200) {
+				toast.success('Successfully added experience information');
+			}
 		});
 
 		console.log(experienceInfo);

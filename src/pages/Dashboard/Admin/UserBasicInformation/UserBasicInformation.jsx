@@ -2,12 +2,16 @@ import FileUploadOutlinedIcon from '@mui/icons-material/FileUploadOutlined';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import ToggleButton from '@mui/material/ToggleButton';
 import ToggleButtonGroup from '@mui/material/ToggleButtonGroup';
+import { useQuery } from '@tanstack/react-query';
 import { Upload } from 'antd';
 import axios from 'axios';
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 import { baseURL } from '../../../../baseURL';
+import FadeLoaderSpinner from '../../../../components/Spinners/FadeLoaderSpinner';
+import AuthContext from '../../../../context/AuthProvider';
 
 const theme = createTheme({
 	palette: {
@@ -22,11 +26,11 @@ const UserBasicInformation = () => {
 		register,
 		handleSubmit,
 		formState: { errors },
-		reset,
-		resetField,
 	} = useForm();
 
 	const navigate = useNavigate();
+
+	const { auth } = useContext(AuthContext);
 
 	const [fileList, setFileList] = useState([]);
 
@@ -64,11 +68,35 @@ const UserBasicInformation = () => {
 		setIsYoutubeActive(newAlignment);
 	};
 
+	// axios
+
+	const {
+		isLoading,
+		error,
+		refetch,
+		data: userInfo,
+	} = useQuery({
+		queryKey: ['userInfo'],
+		queryFn: () =>
+			axios.get(`${baseURL}/api/v1/usersBasicInfo/${auth?.email}`).then((res) => res.data.data),
+	});
+
+	if (isLoading)
+		return (
+			<div className="flex h-screen justify-center items-center w-full">
+				{' '}
+				<FadeLoaderSpinner size={150} />{' '}
+			</div>
+		);
+
+	if (error) return <div>Error</div>;
+
 	const handleBasicUserInformation = (data) => {
-		const { name, email, address, phone, about, linkedin, facebook, skype, youtube } = data;
+		const { name, title, email, address, about, linkedin, facebook, skype, youtube } = data;
 
 		const userInformation = {
 			name,
+			title,
 			image: fileList,
 			email,
 			address,
@@ -84,11 +112,15 @@ const UserBasicInformation = () => {
 			isYoutubeActive,
 		};
 
-		axios.post(`${baseURL}/api/v1/usersBasicInfo`, userInformation).then((response) => {
-			console.log(response);
-		});
-
-		console.log(userInformation);
+		axios
+			.put(`${baseURL}/api/v1/usersBasicInfo/${auth?.email}`, userInformation)
+			.then((response) => {
+				console.log(response);
+				if (response.data.status === 'success') {
+					toast.success('Successfully added Basic information');
+					refetch();
+				}
+			});
 	};
 
 	return (
@@ -110,12 +142,31 @@ const UserBasicInformation = () => {
 							<input
 								type="text"
 								placeholder="Sajid"
+								defaultValue={userInfo?.name}
 								{...register('name', { required: 'Name is required' })}
 								className={`w-full  border border-[#FFD333] focus:outline-0 focus:ring-0 focus:ring-transparent focus:border-[1.5px] focus:border-[#FFD333]  rounded-[3px] h-[60px] mt-4 ${
 									errors.name && 'focus:border-red-600'
 								}`}
 							/>
 							{errors.name && <p className="text-red-600 text-left mt-1">{errors.name?.message}</p>}
+						</div>
+					</div>
+					{/* Title field */}
+					<div className="px-5">
+						<div className="mb-5">
+							<label className="text-base font-medium leading-5">Title</label>
+							<input
+								type="text"
+								placeholder="Web Developer"
+								defaultValue={userInfo?.title}
+								{...register('title', { required: 'Title is required' })}
+								className={`w-full  border border-[#FFD333] focus:outline-0 focus:ring-0 focus:ring-transparent focus:border-[1.5px] focus:border-[#FFD333]  rounded-[3px] h-[60px] mt-4 ${
+									errors.title && 'focus:border-red-600'
+								}`}
+							/>
+							{errors.title && (
+								<p className="text-red-600 text-left mt-1">{errors.title?.message}</p>
+							)}
 						</div>
 					</div>
 
@@ -158,6 +209,7 @@ const UserBasicInformation = () => {
 							<input
 								type="email"
 								placeholder="sajid@gmail.com"
+								defaultValue={auth?.email}
 								{...register('email', { required: 'Email is required' })}
 								className={`w-full  border border-[#FFD333] focus:outline-0 focus:ring-0 focus:ring-transparent focus:border-[1.5px] focus:border-[#FFD333]  rounded-[3px] h-[60px] mt-4 ${
 									errors.email && 'focus:border-red-600'
@@ -176,6 +228,7 @@ const UserBasicInformation = () => {
 							<input
 								type="text"
 								placeholder="Chittagong 123 House"
+								defaultValue={userInfo?.address}
 								{...register('address', { required: 'Address is required' })}
 								className={`w-full  border border-[#FFD333] focus:outline-0 focus:ring-0 focus:ring-transparent focus:border-[1.5px] focus:border-[#FFD333]  rounded-[3px] h-[60px] mt-4 ${
 									errors.address && 'focus:border-red-600'
@@ -194,6 +247,7 @@ const UserBasicInformation = () => {
 							<input
 								type="number"
 								placeholder="92143214"
+								defaultValue={userInfo?.phone}
 								{...register('phone', { required: 'Phone is required' })}
 								className={`w-full  border border-[#FFD333] focus:outline-0 focus:ring-0 focus:ring-transparent focus:border-[1.5px] focus:border-[#FFD333]  rounded-[3px] h-[60px] mt-4 ${
 									errors.phone && 'focus:border-red-600'
@@ -211,6 +265,7 @@ const UserBasicInformation = () => {
 							<label className="text-base font-medium leading-5">About</label>
 							<textarea
 								placeholder="Your Info"
+								defaultValue={userInfo?.about}
 								{...register('about', { required: 'About is required' })}
 								className={`w-full  border border-[#FFD333] focus:outline-0 focus:ring-0 focus:ring-transparent focus:border-[1.5px] focus:border-[#FFD333]  rounded-[3px]  mt-4`}
 								name="about"
@@ -232,6 +287,7 @@ const UserBasicInformation = () => {
 								<input
 									type="text"
 									placeholder="linkedin.com"
+									defaultValue={userInfo?.linkedin}
 									{...register('linkedin', { required: 'Linkedin is required' })}
 									className={`w-full  border border-[#FFD333] focus:outline-0 focus:ring-0 focus:ring-transparent focus:border-[1.5px] focus:border-[#FFD333]  rounded-[3px] h-[60px] mt-4 ${
 										errors.linkedin && 'focus:border-red-600'
@@ -252,6 +308,7 @@ const UserBasicInformation = () => {
 									color="primary"
 									value={isLinkedinActive}
 									exclusive
+									defaultValue={userInfo?.isLinkedinActive}
 									fullWidth
 									className="custom-selected"
 									onChange={handleChangeIsLinkedinActive}
@@ -276,6 +333,7 @@ const UserBasicInformation = () => {
 								<input
 									type="text"
 									placeholder="facebook.com"
+									defaultValue={userInfo?.facebook}
 									{...register('facebook', { required: 'Facebook is required' })}
 									className={`w-full  border border-[#FFD333] focus:outline-0 focus:ring-0 focus:ring-transparent focus:border-[1.5px] focus:border-[#FFD333]  rounded-[3px] h-[60px] mt-4 ${
 										errors.facebook && 'focus:border-red-600'
@@ -297,6 +355,7 @@ const UserBasicInformation = () => {
 									value={isFacebookActive}
 									exclusive
 									fullWidth
+									defaultValue={userInfo?.isFacebookActive}
 									onChange={handleChangeIsFacebookActive}
 									aria-label="Platform">
 									<ToggleButton sx={{ border: '1px solid #FFD333' }} value="active">
@@ -319,6 +378,7 @@ const UserBasicInformation = () => {
 								<input
 									type="text"
 									placeholder="skype.com"
+									defaultValue={userInfo?.skype}
 									{...register('skype')}
 									className={`w-full  border border-[#FFD333] focus:outline-0 focus:ring-0 focus:ring-transparent focus:border-[1.5px] focus:border-[#FFD333]  rounded-[3px] h-[60px] mt-4 ${
 										errors.skype && 'focus:border-red-600'
@@ -338,6 +398,7 @@ const UserBasicInformation = () => {
 								<ToggleButtonGroup
 									color="primary"
 									value={isSkypeActive}
+									defaultValue={userInfo?.isSkypeActive}
 									exclusive
 									fullWidth
 									onChange={handleChangeIsSkypeActive}
@@ -362,6 +423,7 @@ const UserBasicInformation = () => {
 								<input
 									type="text"
 									placeholder="youtube.com"
+									defaultValue={userInfo?.youtube}
 									{...register('youtube')}
 									className={`w-full  border border-[#FFD333] focus:outline-0 focus:ring-0 focus:ring-transparent focus:border-[1.5px] focus:border-[#FFD333]  rounded-[3px] h-[60px] mt-4 ${
 										errors.youtube && 'focus:border-red-600'
@@ -381,6 +443,7 @@ const UserBasicInformation = () => {
 								<ToggleButtonGroup
 									color="primary"
 									value={isYoutubeActive}
+									defaultValue={userInfo?.isYoutubeActive}
 									exclusive
 									fullWidth
 									onChange={handleChangeIsYoutubeActive}

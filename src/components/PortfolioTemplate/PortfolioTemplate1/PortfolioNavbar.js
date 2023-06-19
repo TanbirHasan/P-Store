@@ -1,5 +1,5 @@
 import React, { useContext, useState } from 'react';
-import { COLOR_CONTEXT } from './../../context/ColorProvider';
+import { COLOR_CONTEXT } from '../../../context/ColorProvider';
 
 export default function PortfolioNavbar({
 	setShowAbout,

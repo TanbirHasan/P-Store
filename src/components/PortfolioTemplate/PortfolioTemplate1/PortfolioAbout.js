@@ -1,9 +1,10 @@
 import { useQuery } from '@tanstack/react-query';
 import axios from 'axios';
 import React, { useContext, useState } from 'react';
-import { baseURL } from '../../baseURL';
-import FadeLoaderSpinner from '../Spinners/FadeLoaderSpinner';
-import { COLOR_CONTEXT } from './../../context/ColorProvider';
+import { baseURL } from '../../../baseURL';
+import AuthContext from '../../../context/AuthProvider';
+import { COLOR_CONTEXT } from '../../../context/ColorProvider';
+import FadeLoaderSpinner from '../../Spinners/FadeLoaderSpinner';
 
 const stats = [
 	{
@@ -26,6 +27,8 @@ export default function PortfolioAbout() {
 
 	const [file, setFile] = useState();
 
+	const { auth } = useContext(AuthContext);
+
 	// axios
 
 	const {
@@ -35,20 +38,20 @@ export default function PortfolioAbout() {
 	} = useQuery({
 		queryKey: ['userInfo'],
 		queryFn: () =>
-			axios.get(`${baseURL}/api/v1/usersBasicInfo/sajid@gmail.com`).then((res) => res.data.data),
+			axios.get(`${baseURL}/api/v1/usersBasicInfo/${auth?.email}`).then((res) => res.data.data),
 	});
 
 	if (isLoading)
 		return (
 			<div className="flex h-screen justify-center items-center w-full">
 				{' '}
-				<FadeLoaderSpinner size={150}  color={fontColor} />{' '}
+				<FadeLoaderSpinner size={150} color={fontColor} />{' '}
 			</div>
 		);
 
 	if (error) return <div>Error</div>;
 
-	const { about, name, image } = userInfo;
+	// const { name, image } = userInfo;
 
 	// const imageURL = window.URL.createObjectURL(image[0])
 	// console.log(imageURL);
@@ -59,9 +62,9 @@ export default function PortfolioAbout() {
 				<div className="p-5 lg:w-2/4 mx-auto text-center md:text-left">
 					{/* Here name , designation will be dynamic */}
 					<h4>Hello</h4>
-					<h2 className="text-3xl">I'm {name}</h2>
-					<h3 className="text-xl">A passionate {}</h3>
-					<p>{about}</p>
+					<h2 className="text-3xl">I'm {userInfo?.name}</h2>
+					<h3 className="text-xl">A passionate {userInfo?.title}</h3>
+					<p>{userInfo?.about}</p>
 				</div>
 				<div className="lg:w-2/4 mx-auto justify-center">
 					{fileList[0]?.thumbUrl ? (

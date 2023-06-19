@@ -1,10 +1,10 @@
-import React, { useEffect, useState } from 'react';
+import { Tooltip } from '@mui/material';
+import React, { useContext, useEffect, useState } from 'react';
 import { AiFillHome } from 'react-icons/ai';
-import { GiSkills } from 'react-icons/gi';
-import { HiInformationCircle } from 'react-icons/hi';
 import { FaSuitcase } from 'react-icons/fa';
+import { GiSkills, GiTalk } from 'react-icons/gi';
+import { HiInformationCircle } from 'react-icons/hi';
 import { MdSchool } from 'react-icons/md';
-import { GiTalk } from 'react-icons/gi';
 import { Menu, Sidebar, useProSidebar } from 'react-pro-sidebar';
 import { Link, Outlet, ScrollRestoration, useLocation, useNavigate } from 'react-router-dom';
 import analyticsDarkVesion from '../../assets/icons/analytics-dark-version.svg';
@@ -22,11 +22,16 @@ import recommendation from '../../assets/icons/recommendation.svg';
 import userIconDark from '../../assets/icons/user-dark-version.svg';
 import userIcon from '../../assets/icons/users.svg';
 import videoLibraryDark from '../../assets/icons/videoLibrary-dark.svg';
-import videoLibrary from '../../assets/icons/videolibrary.svg';
+import videoLibrary from '../../assets/icons/videoLibrary.svg';
 import DashboardNavbar from '../../components/DashboardNavbar/DashboardNavbar';
+import AuthContext from '../../context/AuthProvider';
 
 const DashboardLayout = () => {
 	const { toggleSidebar, collapseSidebar, broken, collapsed } = useProSidebar();
+
+	const { auth } = useContext(AuthContext);
+
+	const { email, roles, accessToken } = auth;
 
 	const [createPortal, setCreatePortal] = useState(false);
 
@@ -63,10 +68,27 @@ const DashboardLayout = () => {
 										</h1>
 									</Link>
 
-									<Link to="/portfoliohome">
-										<div className="uppercase text-[20px] text-center font-extrabold italic">
-											PortfolioHome
-										</div>
+									<Link to="/portfolio-template-1">
+										<Tooltip arrow  title="Portfolio Template 1">
+											<div className="uppercase text-[15px] text-center font-extrabold italic">
+												Portfolio Template 1
+											</div>
+										</Tooltip>
+									</Link>
+
+									<Link to="/portfolio-template-2">
+										<Tooltip arrow  title="Portfolio Template 2">
+											<div className="uppercase text-[15px] text-center font-extrabold italic my-3">
+												Portfolio Template 2
+											</div>
+										</Tooltip>
+									</Link>
+									<Link to="/portfolio-template-3">
+										<Tooltip arrow  title="Portfolio Template 3">
+											<div className="uppercase text-[15px] text-center font-extrabold italic my-3">
+												Portfolio Template 3
+											</div>
+										</Tooltip>
 									</Link>
 								</div>
 
@@ -111,128 +133,136 @@ const DashboardLayout = () => {
 											</div>
 										</Link>
 
-										{/*                  Organization                   */}
-										<Link
-											onClick={() => {
-												localStorage.removeItem('create-portal');
-												localStorage.removeItem('ShowAllPortfolio');
-												setCreatePortal(false);
-											}}
-											to={'/dashboard/admin/organization'}>
-											<div
-												className={`relative  py-3 flex hover:cursor-pointer text-lg rounded-[3px] mb-2  ${
-													activeRoute('/dashboard/admin/organization') === true
-														? 'font-bold bg-[#FFBC0F]'
-														: 'font-medium '
-												}`}>
-												<li className="my-[3px] flex cursor-pointer items-center px-3 text-[18px]">
-													{activeRoute('/dashboard/admin/organization') === true ? (
-														<img
-															src={organizationDarkVersion}
-															alt="organization-icon"
-															className={`w-[20px] h-[20px]`}
-														/>
-													) : (
-														<img
-															src={organization}
-															alt="organization-icon"
-															className={`w-[20px] h-[20px]`}
-														/>
-													)}
+										{Array.isArray(roles) && (
+											<>
+												{auth?.roles[0] === 5150 && (
+													<>
+														{/*                  Organization                   */}
+														<Link
+															onClick={() => {
+																localStorage.removeItem('create-portal');
+																localStorage.removeItem('ShowAllPortfolio');
+																setCreatePortal(false);
+															}}
+															to={'/dashboard/admin/organization'}>
+															<div
+																className={`relative  py-3 flex hover:cursor-pointer text-lg rounded-[3px] mb-2  ${
+																	activeRoute('/dashboard/admin/organization') === true
+																		? 'font-bold bg-[#FFBC0F]'
+																		: 'font-medium '
+																}`}>
+																<li className="my-[3px] flex cursor-pointer items-center px-3 text-[18px]">
+																	{activeRoute('/dashboard/admin/organization') === true ? (
+																		<img
+																			src={organizationDarkVersion}
+																			alt="organization-icon"
+																			className={`w-[20px] h-[20px]`}
+																		/>
+																	) : (
+																		<img
+																			src={organization}
+																			alt="organization-icon"
+																			className={`w-[20px] h-[20px]`}
+																		/>
+																	)}
 
-													<p
-														className={`leading-5 ml-[10px] flex ${
-															activeRoute('/dashboard/admin/organization') === true
-																? 'font-bold'
-																: 'font-medium'
-														} `}>
-														Organization
-													</p>
-												</li>
-											</div>
-										</Link>
+																	<p
+																		className={`leading-5 ml-[10px] flex ${
+																			activeRoute('/dashboard/admin/organization') === true
+																				? 'font-bold'
+																				: 'font-medium'
+																		} `}>
+																		Organization
+																	</p>
+																</li>
+															</div>
+														</Link>
 
-										{/*                  USERS                   */}
-										<Link
-											onClick={() => {
-												localStorage.removeItem('create-portal');
-												localStorage.removeItem('ShowAllPortfolio');
-												setCreatePortal(false);
-											}}
-											to={'/dashboard/admin/administrator'}>
-											<div
-												className={`relative  py-3 flex hover:cursor-pointer text-lg rounded-[3px] mb-2  ${
-													activeRoute('/dashboard/admin/administrator') === true
-														? 'font-bold bg-[#FFBC0F]'
-														: 'font-medium '
-												}`}>
-												<li className="my-[3px] flex cursor-pointer items-center px-3 text-[18px]">
-													{activeRoute('/dashboard/admin/administrator') === true ? (
-														<img
-															src={userIconDark}
-															alt="organization-icon"
-															className={`w-[20px] h-[20px]`}
-														/>
-													) : (
-														<img
-															src={userIcon}
-															alt="organization-icon"
-															className={`w-[20px] h-[20px]`}
-														/>
-													)}
+														{/*                  USERS                   */}
+														<Link
+															onClick={() => {
+																localStorage.removeItem('create-portal');
+																localStorage.removeItem('ShowAllPortfolio');
+																setCreatePortal(false);
+															}}
+															to={'/dashboard/admin/administrator'}>
+															<div
+																className={`relative  py-3 flex hover:cursor-pointer text-lg rounded-[3px] mb-2  ${
+																	activeRoute('/dashboard/admin/administrator') === true
+																		? 'font-bold bg-[#FFBC0F]'
+																		: 'font-medium '
+																}`}>
+																<li className="my-[3px] flex cursor-pointer items-center px-3 text-[18px]">
+																	{activeRoute('/dashboard/admin/administrator') === true ? (
+																		<img
+																			src={userIconDark}
+																			alt="organization-icon"
+																			className={`w-[20px] h-[20px]`}
+																		/>
+																	) : (
+																		<img
+																			src={userIcon}
+																			alt="organization-icon"
+																			className={`w-[20px] h-[20px]`}
+																		/>
+																	)}
 
-													<p
-														className={`leading-5 ml-[10px] flex ${
-															activeRoute('/dashboard/admin/administrator') === true
-																? 'font-bold'
-																: 'font-medium'
-														} `}>
-														Users
-													</p>
-												</li>
-											</div>
-										</Link>
+																	<p
+																		className={`leading-5 ml-[10px] flex ${
+																			activeRoute('/dashboard/admin/administrator') === true
+																				? 'font-bold'
+																				: 'font-medium'
+																		} `}>
+																		Users
+																	</p>
+																</li>
+															</div>
+														</Link>
 
-										{/*                  ANALYTICS                   */}
-										<Link
-											onClick={() => {
-												setCreatePortal(false);
-												localStorage.removeItem('create-portal');
-												localStorage.removeItem('ShowAllPortfolio');
-											}}
-											to={'/dashboard/admin/analytics'}>
-											<div
-												className={`relative  py-3 flex hover:cursor-pointer text-lg rounded-[3px] mb-2  ${
-													activeRoute('/dashboard/admin/analytics') === true
-														? 'font-bold bg-[#FFBC0F]'
-														: 'font-medium '
-												}`}>
-												<li className="my-[3px] flex cursor-pointer items-center px-3 text-[18px]">
-													{activeRoute('/dashboard/admin/analytics') === true ? (
-														<img
-															src={analyticsDarkVesion}
-															alt="organization-icon"
-															className={`w-[20px] h-[20px]`}
-														/>
-													) : (
-														<img
-															src={analytics}
-															alt="organization-icon"
-															className={`w-[20px] h-[20px]`}
-														/>
-													)}
+														{/*                  ANALYTICS                   */}
+														<Link
+															onClick={() => {
+																setCreatePortal(false);
+																localStorage.removeItem('create-portal');
+																localStorage.removeItem('ShowAllPortfolio');
+															}}
+															to={'/dashboard/admin/analytics'}>
+															<div
+																className={`relative  py-3 flex hover:cursor-pointer text-lg rounded-[3px] mb-2  ${
+																	activeRoute('/dashboard/admin/analytics') === true
+																		? 'font-bold bg-[#FFBC0F]'
+																		: 'font-medium '
+																}`}>
+																<li className="my-[3px] flex cursor-pointer items-center px-3 text-[18px]">
+																	{activeRoute('/dashboard/admin/analytics') === true ? (
+																		<img
+																			src={analyticsDarkVesion}
+																			alt="organization-icon"
+																			className={`w-[20px] h-[20px]`}
+																		/>
+																	) : (
+																		<img
+																			src={analytics}
+																			alt="organization-icon"
+																			className={`w-[20px] h-[20px]`}
+																		/>
+																	)}
 
-													<p
-														className={`leading-5 ml-[10px] flex ${
-															activeRoute('/dashboard/admin/analytics') === true
-																? 'font-bold'
-																: 'font-medium'
-														} `}>
-														Analytics
-													</p>
-												</li>
-											</div>
-										</Link>
+																	<p
+																		className={`leading-5 ml-[10px] flex ${
+																			activeRoute('/dashboard/admin/analytics') === true
+																				? 'font-bold'
+																				: 'font-medium'
+																		} `}>
+																		Analytics
+																	</p>
+																</li>
+															</div>
+														</Link>
+													</>
+												)}
+											</>
+										)}
 
 										{/*                  Create Portal                   */}
 										<div className={`${createPortal ? 'hidden' : 'block'}`}>

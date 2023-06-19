@@ -1,18 +1,13 @@
-import React, { useContext } from 'react';
-import { COLOR_CONTEXT } from './../../context/ColorProvider';
+import React from 'react';
 import PortfolioAbout from './PortfolioAbout';
 import PortfolioContact from './PortfolioContact';
 import PortfolioEducation from './PortfolioEducation';
 import PortfolioExperience from './PortfolioExperience';
 import PortfolioNavbar from './PortfolioNavbar';
-import PortfolioProjects from './PortfolioProjects';
 import PortfolioSkills from './PortfolioSkills';
-import PortfolioTestimonials from './PortfolioTestimonials';
+import PortfolioTestimonial from './PortfolioTestimonial';
 
-export default function PortfolioHome() {
-	const { backgroundColor, primaryColor, secondaryColor, fontColor, fileList } =
-		useContext(COLOR_CONTEXT);
-
+const PortfolioHome = () => {
 	const [showAbout, setShowAbout] = React.useState(false);
 	const [showProjects, setShowProjects] = React.useState(false);
 	const [showSkills, setShowSkills] = React.useState(false);
@@ -21,7 +16,7 @@ export default function PortfolioHome() {
 	const [showExperience, setShowExperience] = React.useState(false);
 
 	return (
-		<div style={{ backgroundColor: backgroundColor, color: fontColor }} className="">
+		<div className="">
 			<PortfolioNavbar
 				setShowAbout={setShowAbout}
 				setShowProjects={setShowProjects}
@@ -36,13 +31,10 @@ export default function PortfolioHome() {
 				showExperience={showExperience}
 				setShowExperience={setShowExperience}
 			/>
-
 			{showAbout ? (
 				<PortfolioAbout />
 			) : showSkills ? (
 				<PortfolioSkills />
-			) : showProjects ? (
-				<PortfolioProjects />
 			) : showContact ? (
 				<PortfolioContact />
 			) : showEducation ? (
@@ -50,16 +42,15 @@ export default function PortfolioHome() {
 			) : showExperience ? (
 				<PortfolioExperience />
 			) : (
-				<>
-					<div className="flex items-center justify-between  mx-auto">
-						<PortfolioAbout />
-					</div>
-					<div className=''>
-						<PortfolioSkills />
-						<PortfolioTestimonials />
-					</div>
-				</>
+				<div>
+					<PortfolioAbout />
+					<PortfolioSkills />
+					<PortfolioTestimonial />
+				</div>
 			)}
 		</div>
 	);
-}
+};
+
+export { PortfolioHome };
+

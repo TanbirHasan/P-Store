@@ -11,9 +11,10 @@ import React, { useContext, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
+import PortfolioHome from '../../../../components/PortfolioTemplate/PortfolioTemplate1/PortfolioHome';
+import { PortfolioHome as PortfolioTemplate2 } from '../../../../components/PortfolioTemplate/PortfolioTemplate2/PortfolioHome';
+import { PortfolioHome as PortfolioTemplate3 } from '../../../../components/PortfolioTemplate/PortfolioTemplate3/PortfolioHome';
 import { COLOR_CONTEXT } from '../../../../context/ColorProvider';
-import PortfolioHome from './../../../../components/PortfolioTemplate/PortfolioHome';
-import { createPortal } from 'react-dom';
 
 const YellowSwitch = styled(Switch)(({ theme }) => ({
 	'& .MuiSwitch-switchBase.Mui-checked': {
@@ -135,7 +136,7 @@ const Branding = () => {
 		};
 
 		console.log(brandingData);
-		navigate('/dashboard/admin/createPortfolio-home');
+		// navigate('/dashboard/admin/createPortfolio-home');
 	};
 
 	return (
@@ -151,6 +152,7 @@ const Branding = () => {
 					</button>
 				</div>
 
+				{/* Client and Template fields */}
 				<div className="p-8 border border-[#ffbc0f66] ">
 					{/* Client select field */}
 					<div className="flex items-center justify-between mb-5">
@@ -176,7 +178,7 @@ const Branding = () => {
 					</div>
 
 					{/* Template select field */}
-					<div className="flex items-center justify-between mb-5">
+					<div id='template' className="flex items-center justify-between mb-5">
 						<div>
 							<h1 className="font-medium">Select Template</h1>
 						</div>
@@ -191,9 +193,9 @@ const Branding = () => {
 								<MenuItem sx={{ display: 'none' }} disabled value={''}>
 									Select Template
 								</MenuItem>
-								<MenuItem value={'Template 1'}>Template 1</MenuItem>
-								<MenuItem value={'Template 2'}>Template 2</MenuItem>
-								<MenuItem value={'Template 3'}>Template 3</MenuItem>
+								<MenuItem value={'Portfolio Template 1'}>Portfolio Template 1</MenuItem>
+								<MenuItem value={'Portfolio Template 2'}>Portfolio Template 2</MenuItem>
+								<MenuItem value={'Portfolio Template 3'}>Portfolio Template 3</MenuItem>
 							</Select>
 							{templateError && <p className="text-red-600 text-left mt-1">{templateError}</p>}
 						</div>
@@ -438,11 +440,13 @@ const Branding = () => {
 
 				{/* Preview Screen */}
 
-				<div className='w-full p-6 border border-[#ffbc0f66] border-t-0  mb-5'>
-
-				<div className="w-full lg:w-[1000px] mx-auto mt-20 ">
-					<PortfolioHome />
-				</div>
+				<div className="w-full p-6 border border-[#ffbc0f66] border-t-0  mb-5">
+					<div className="w-full lg:w-[1000px] mx-auto ">
+						{!template.length && <p className='text-xl text-center font-bold mt-10'>Select a template</p>}
+						{template === 'Portfolio Template 1' ? <PortfolioHome /> : null}
+						{template === 'Portfolio Template 2' ? <PortfolioTemplate2 /> : null}
+						{template === 'Portfolio Template 3' ? <PortfolioTemplate3 /> : null}
+					</div>
 				</div>
 
 				{/* Save button */}
